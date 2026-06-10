@@ -5,6 +5,7 @@ interface SectionHeadingProps {
   number: string
   label: string
   title: string
+  headingId?: string
   description?: string
   align?: 'left' | 'center'
   className?: string
@@ -14,6 +15,7 @@ export function SectionHeading({
   number,
   label,
   title,
+  headingId,
   description,
   align = 'left',
   className,
@@ -36,11 +38,14 @@ export function SectionHeading({
           {label}
         </span>
       </div>
-      <h2 className="text-display mt-4 text-3xl text-white md:text-4xl lg:text-5xl">
+      <h2
+        id={headingId}
+        className="text-display mt-4 text-3xl text-white md:text-4xl lg:text-5xl"
+      >
         {title}
       </h2>
       {description && (
-        <p className="mt-4 text-base text-muted md:text-lg">{description}</p>
+        <p className="mt-4 text-lg text-muted md:text-xl">{description}</p>
       )}
     </motion.header>
   )

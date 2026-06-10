@@ -29,4 +29,4 @@ export const certificationGroups: CertificationGroup[] = [
 
 export const certifications = certificationGroups.flatMap((group) => group.certifications)
 
-export const awards = ['Applause Awards (7×) — Deloitte']
+export const awards = ['Applause Awards (7×), Deloitte']

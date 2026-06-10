@@ -9,13 +9,14 @@ import { projects } from '@/data/projects'
 
 export function Projects() {
   return (
-    <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
+    <SectionWrapper id="projects" className="bg-section-projects" ariaLabelledBy="projects-heading">
       <Container>
         <SectionHeading
           number="03"
           label="Work"
+          headingId="projects-heading"
           title="Selected projects"
-          description="A snapshot of the kind of products I build — from dashboards to marketing sites."
+          description="A snapshot of the kind of products I build, from dashboards to marketing sites."
         />
 
         <div className="grid gap-4 md:grid-cols-3">
@@ -43,10 +44,10 @@ export function Projects() {
                       <Badge key={t}>{t}</Badge>
                     ))}
                   </div>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
+                  <p className="mt-3 flex-1 text-base leading-relaxed text-muted">
                     {project.description}
                   </p>
-                  <div className="mt-5 flex gap-4 text-xs font-medium">
+                  <div className="mt-5 flex gap-4 text-sm font-medium">
                     <a
                       href={project.liveUrl}
                       className="inline-flex items-center gap-1 text-accent-soft hover:text-white"

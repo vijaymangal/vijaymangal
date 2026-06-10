@@ -24,13 +24,14 @@ const serviceIcons: Record<string, LucideIcon> = {
 
 export function Services() {
   return (
-    <SectionWrapper id="services" className="bg-surface/40" ariaLabelledBy="services-heading">
+    <SectionWrapper id="services" className="bg-section-services" ariaLabelledBy="services-heading">
       <Container>
         <SectionHeading
           number="04"
           label="Services"
+          headingId="services-heading"
           title="How I can help"
-          description="Whether you need a full build or targeted frontend expertise — I've got you covered."
+          description="Whether you need a full build or targeted frontend expertise, I've got you covered."
         />
 
         <motion.div
@@ -67,7 +68,7 @@ export function Services() {
                 <h3 className="mt-5 text-lg font-semibold text-white transition-colors group-hover:text-accent-soft">
                   {service.title}
                 </h3>
-                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                <p className="mt-2 flex-1 text-base leading-relaxed text-muted">
                   {service.description}
                 </p>
               </motion.article>

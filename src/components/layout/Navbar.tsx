@@ -39,7 +39,7 @@ export function Navbar() {
               e.preventDefault()
               handleNavClick('#hero')
             }}
-            aria-label="Vijay Mangal — Home"
+            aria-label="Vijay Mangal home"
             className="hover:opacity-90"
           >
             <Logo size="sm" />
@@ -55,7 +55,7 @@ export function Navbar() {
                     handleNavClick(item.href)
                   }}
                   className={cn(
-                    'relative rounded-full px-3.5 py-2 text-[13px] font-medium transition-colors',
+                    'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors',
                     activeSection === item.id
                       ? 'text-white'
                       : 'text-muted hover:text-white'

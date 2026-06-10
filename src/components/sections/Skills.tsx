@@ -15,11 +15,12 @@ const categoryIcons: Record<string, LucideIcon> = {
 
 export function Skills() {
   return (
-    <SectionWrapper id="skills" className="bg-surface/40" ariaLabelledBy="skills-heading">
+    <SectionWrapper id="skills" className="bg-section-skills" ariaLabelledBy="skills-heading">
       <Container>
         <SectionHeading
           number="02"
           label="Skills"
+          headingId="skills-heading"
           title="Tools I work with"
           description="Technologies I use daily to ship reliable, beautiful frontends."
         />
@@ -53,7 +54,7 @@ export function Skills() {
                         {String(index + 1).padStart(2, '0')}
                       </span>
                     </div>
-                    <p className="mt-1.5 text-xs leading-relaxed text-muted md:text-sm">
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted md:text-base">
                       {category.description}
                     </p>
                   </div>
@@ -62,7 +63,7 @@ export function Skills() {
                 <ul className="flex flex-wrap gap-2 md:col-span-8 md:content-start lg:col-span-9">
                   {category.skills.map((skill) => (
                     <li key={skill}>
-                      <span className="surface-interactive inline-flex items-center rounded-full px-3.5 py-1.5 text-xs font-medium text-white">
+                      <span className="surface-interactive inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium text-white">
                         {skill}
                       </span>
                     </li>

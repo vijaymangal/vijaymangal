@@ -19,7 +19,7 @@ export function Footer() {
             </p>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent-soft hover:text-white"
+              className="mt-4 inline-flex items-center gap-1 text-base font-medium text-accent-soft hover:text-white"
             >
               {contactInfo.email}
               <ArrowUpRight className="h-4 w-4" />

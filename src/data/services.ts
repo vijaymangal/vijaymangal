@@ -5,7 +5,7 @@ export const services: Service[] = [
     id: 'ui-ux',
     title: 'UI/UX Development',
     description:
-      'End-to-end UI/UX lifecycle — from concept, design, and prototyping through frontend implementation and production support.',
+      'End-to-end UI/UX lifecycle, from concept, design, and prototyping through frontend implementation and production support.',
   },
   {
     id: 'react-lwc',

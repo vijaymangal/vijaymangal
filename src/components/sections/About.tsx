@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Briefcase, Palette, Users, Award, Cloud } from 'lucide-react'
+import { Briefcase, Palette, Users, Award, Cloud, Trophy } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -19,7 +19,7 @@ const highlights = [
   {
     icon: Briefcase,
     title: 'Enterprise Products',
-    text: 'Leading UI/UX development for Deloitte — delivering client-ready digital experiences across web applications.',
+    text: 'Leading UI/UX development for Deloitte, delivering client-ready digital experiences across web applications.',
   },
   {
     icon: Palette,
@@ -35,11 +35,16 @@ const highlights = [
 
 export function About() {
   return (
-    <SectionWrapper id="about" ariaLabelledBy="about-heading">
+    <SectionWrapper
+      id="about"
+      className="bg-section-about"
+      ariaLabelledBy="about-heading"
+    >
       <Container>
         <SectionHeading
           number="01"
           label="About"
+          headingId="about-heading"
           title="Engineering with intent"
           description="Senior UI/UX Engineer with 14+ years in frontend development, UI/UX design, and responsive web application delivery."
         />
@@ -56,7 +61,7 @@ export function About() {
             >
               <item.icon className="h-5 w-5 text-accent-soft" strokeWidth={1.5} />
               <h3 className="mt-4 font-semibold text-white">{item.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{item.text}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted">{item.text}</p>
             </motion.div>
           ))}
         </div>
@@ -75,8 +80,8 @@ export function About() {
               SFDC Lightning Web Components, and design tools including Figma and Adobe.
             </p>
             <p>
-              I manage the full UI/UX lifecycle — from concept and prototyping through frontend
-              implementation — with emphasis on usability, design quality, and client-ready assets.
+              I manage the full UI/UX lifecycle, from concept and prototyping through frontend
+              implementation, with emphasis on usability, design quality, and client-ready assets.
             </p>
             <p>
               I hold a <span className="font-medium text-white">B.Sc. in Biotechnology</span> from
@@ -85,9 +90,12 @@ export function About() {
             </p>
 
             <div className="pt-4">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-accent-soft">
-                Awards
-              </p>
+              <div className="mb-3 flex items-center gap-2">
+                <Trophy className="h-4 w-4 text-accent-soft" strokeWidth={1.75} />
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-accent-soft">
+                  Awards
+                </h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {awards.map((award) => (
                   <Badge key={award}>{award}</Badge>
@@ -96,7 +104,15 @@ export function About() {
             </div>
           </motion.div>
 
-          <div className="space-y-0">
+          <div className="mt-10 border-t border-[var(--color-border)] pt-10 lg:mt-0 lg:border-t-0 lg:pt-0">
+            <div className="mb-6 flex items-center gap-2">
+              <Briefcase className="h-4 w-4 text-accent-soft" strokeWidth={1.75} />
+              <h3 className="text-xs font-semibold uppercase tracking-wider text-accent-soft">
+                Experience
+              </h3>
+            </div>
+
+            <div className="space-y-0">
             {timeline.map((item, index) => (
               <motion.div
                 key={item.id}
@@ -111,10 +127,11 @@ export function About() {
                   <h3 className="font-semibold text-white transition-colors group-hover:text-accent-soft">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-sm text-muted">{item.description}</p>
+                  <p className="mt-1 text-base text-muted">{item.description}</p>
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
         </div>
 
@@ -161,7 +178,7 @@ export function About() {
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
-                      <p className="mt-1 text-xs text-muted">
+                      <p className="mt-1 text-sm text-muted">
                         {group.certifications.length} certification
                         {group.certifications.length === 1 ? '' : 's'}
                       </p>
@@ -171,7 +188,7 @@ export function About() {
                   <ul className="flex flex-wrap gap-2 md:col-span-8 md:content-start lg:col-span-9">
                     {group.certifications.map((cert) => (
                       <li key={cert}>
-                        <span className="inline-flex items-center rounded-full bg-white/[0.04] px-3.5 py-1.5 text-xs font-medium text-white/90">
+                        <span className="inline-flex items-center rounded-full bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-white/90">
                           {cert}
                         </span>
                       </li>

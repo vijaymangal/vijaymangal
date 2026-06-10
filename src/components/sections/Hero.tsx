@@ -27,8 +27,17 @@ const item = {
 
 export function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen pt-20 md:pt-24">
-      <Container className="flex min-h-[calc(100vh-5rem)] items-center py-16 md:py-20">
+    <section
+      id="hero"
+      aria-label="Introduction"
+      className="relative min-h-screen overflow-hidden bg-section-hero pt-20 md:pt-24"
+    >
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-15%,rgba(201,165,92,0.16),transparent_65%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-section-about md:h-32" />
+      </div>
+
+      <Container className="relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16 md:py-20">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 xl:gap-20">
           <motion.div variants={stagger} initial="hidden" animate="show">
             <motion.div variants={item} className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5">
@@ -47,12 +56,12 @@ export function Hero() {
             </motion.h1>
 
             <motion.p variants={item} className="mt-6 max-w-lg text-lg text-muted md:text-xl">
-              Senior UI/UX Engineer with 14+ years building responsive web applications — leading
+              Senior UI/UX Engineer with 14+ years building responsive web applications, leading
               UI/UX for <span className="font-medium text-white">enterprise products at Deloitte</span>{' '}
               with a focus on usability and design quality.
             </motion.p>
 
-            <motion.div variants={item} className="mt-4 flex items-center gap-2 text-sm text-muted">
+            <motion.div variants={item} className="mt-4 flex items-center gap-2 text-base text-muted">
               <MapPin className="h-4 w-4 text-accent-soft" />
               Jaipur, India · UI/UX · Frontend Development
             </motion.div>
@@ -118,34 +127,28 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative mx-auto w-full max-w-md lg:max-w-none"
+            className="mx-auto flex w-full max-w-sm flex-col items-center lg:max-w-md"
           >
-            <ParallaxPhoto>
+            <ParallaxPhoto className="w-full">
               <motion.div
+                className="relative w-full"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
               >
-                <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-accent/40 via-transparent to-cyan/30 opacity-60" />
-                <div className="surface relative aspect-square overflow-hidden rounded-2xl p-1">
+                <div className="absolute -inset-px rounded-full bg-gradient-to-br from-accent/40 via-transparent to-cyan/30 opacity-60" />
+                <div className="surface relative aspect-square w-full overflow-hidden rounded-full p-1">
                   <img
                     src={profilePhoto}
-                    alt="Vijay Mangal"
-                    className="h-full w-full rounded-xl object-cover object-top"
+                    alt="Portrait of Vijay Mangal, Senior UI/UX Engineer"
+                    className="h-full w-full rounded-full object-cover object-top"
                     loading="eager"
                     fetchPriority="high"
+                    width={640}
+                    height={640}
                   />
                 </div>
               </motion.div>
             </ParallaxPhoto>
-            <motion.div
-              className="surface absolute -bottom-4 -left-4 hidden rounded-2xl px-4 py-3 md:block"
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
-            >
-              <p className="text-xs font-medium text-muted">Currently</p>
-              <p className="text-sm font-semibold text-white">Deloitte</p>
-            </motion.div>
           </motion.div>
         </div>
       </Container>
