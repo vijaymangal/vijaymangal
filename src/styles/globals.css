@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Authentic Photograph';
+  src: url('../assets/Authentic%20Photograph.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-bg: #050506;
+  --color-surface: #0c0c0e;
+  --color-elevated: #131316;
+  --color-card: #18181c;
+  --color-accent: #c9a55c;
+  --color-accent-soft: #dbb978;
+  --color-cyan: #e8dcc8;
+  --color-muted: #71717a;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --font-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-heading: 'Montserrat', system-ui, sans-serif;
+  --font-name: 'Authentic Photograph', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: #fafafa;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  color: #fff;
+}
+
+/* Subtle dot grid */
+.bg-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Accent glow — single layer, restrained */
+.glow-accent {
+  background: radial-gradient(
+    600px circle at var(--glow-x, 50%) var(--glow-y, 0%),
+    rgba(201, 165, 92, 0.12),
+    transparent 60%
+  );
+}
+
+.surface {
+  background-color: var(--color-elevated);
+  border: 1px solid var(--color-border);
+}
+
+.surface-interactive {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+}
+
+.surface-interactive:hover {
+  border-color: rgba(201, 165, 92, 0.35);
+  background-color: #1c1c21;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+.text-display {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-name {
+  font-family: var(--font-name);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #dbb978 50%, #e8dcc8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-soft);
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+.container-main {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    padding-inline: 2rem;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
