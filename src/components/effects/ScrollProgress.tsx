@@ -14,7 +14,7 @@ export function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-accent via-accent-soft to-cyan"
+      className="fixed inset-x-0 bottom-0 z-40 h-[2px] origin-left bg-gradient-to-r from-accent via-accent-soft to-cyan"
       style={{ scaleX }}
       aria-hidden="true"
     />
