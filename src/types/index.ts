@@ -29,7 +29,6 @@ export interface Project {
   image: string
   tech: string[]
   liveUrl: string
-  githubUrl: string
 }
 
 export interface Service {

@@ -9,7 +9,6 @@ export const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
     tech: ['React', 'Tailwind', 'Responsive Design'],
     liveUrl: 'https://elevate-digital-red.vercel.app/',
-    githubUrl: 'https://github.com/vijaymangal/elevate-digital',
   },
   {
     id: 'saas-dashboard',
@@ -19,7 +18,6 @@ export const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
     tech: ['Next.js', 'Charts', 'Authentication UI'],
     liveUrl: '#',
-    githubUrl: '#',
   },
   {
     id: 'ecommerce-storefront',
@@ -29,6 +27,5 @@ export const projects: Project[] = [
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
     tech: ['React', 'API Integration', 'Cart Functionality'],
     liveUrl: '#',
-    githubUrl: '#',
   },
 ]
