@@ -8,7 +8,10 @@ export const certificationGroups: CertificationGroup[] = [
   {
     id: 'ux',
     title: 'UX & Design',
-    certifications: ['Google UX Design Professional Certificate'],
+    certifications: [
+      'Google UX Design Professional Certificate',
+      "Innovation of Products and Services: MIT's Approach to Design Thinking",
+    ],
   },
   {
     id: 'scrum',
