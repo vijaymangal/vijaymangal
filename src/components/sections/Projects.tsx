@@ -29,12 +29,16 @@ export function Projects() {
                 transition={{ duration: 0.45, delay: index * 0.08 }}
                 className="surface-interactive group flex h-full flex-col overflow-hidden rounded-2xl"
               >
-                <div className="aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#0b1120]">
                   <img
                     src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={`${project.title} website preview`}
+                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
                     loading="lazy"
+                  />
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/[0.06]"
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-5">
