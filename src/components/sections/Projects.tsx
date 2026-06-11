@@ -50,12 +50,16 @@ export function Projects() {
                   <div className="mt-5 flex gap-4 text-sm font-medium">
                     <a
                       href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-accent-soft hover:text-white"
                     >
                       Demo <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
                     <a
                       href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 text-muted hover:text-white"
                     >
                       <Github className="h-3.5 w-3.5" /> GitHub

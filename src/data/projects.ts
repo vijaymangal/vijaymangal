@@ -8,8 +8,8 @@ export const projects: Project[] = [
       'A sleek website for a fictional business with service pages and contact form.',
     image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
     tech: ['React', 'Tailwind', 'Responsive Design'],
-    liveUrl: '#',
-    githubUrl: '#',
+    liveUrl: 'https://elevate-digital-red.vercel.app/',
+    githubUrl: 'https://github.com/vijaymangal/elevate-digital',
   },
   {
     id: 'saas-dashboard',
