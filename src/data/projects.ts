@@ -15,9 +15,9 @@ export const projects: Project[] = [
     title: 'SaaS Dashboard UI',
     description:
       'A modern dashboard showcasing component architecture and data visualization.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    image: '/projects/insightflow-ai.png',
     tech: ['Next.js', 'Charts', 'Authentication UI'],
-    liveUrl: '#',
+    liveUrl: 'https://insightflow-ai-mu.vercel.app/',
   },
   {
     id: 'ecommerce-storefront',
