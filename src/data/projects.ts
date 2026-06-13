@@ -2,6 +2,15 @@ import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
+    id: 'ecommerce-storefront',
+    title: 'E-commerce Storefront',
+    description:
+      'A premium outdoor gear storefront with product filtering, cart, and responsive product pages.',
+    image: '/projects/summit-supply.png',
+    tech: ['React', 'API Integration', 'Cart Functionality'],
+    liveUrl: 'https://summit-supply.vercel.app/',
+  },
+  {
     id: 'business-website',
     title: 'Modern Business Website',
     description:
@@ -18,14 +27,5 @@ export const projects: Project[] = [
     image: '/projects/insightflow-ai.png',
     tech: ['Next.js', 'Charts', 'Authentication UI'],
     liveUrl: 'https://insightflow-ai-mu.vercel.app/',
-  },
-  {
-    id: 'ecommerce-storefront',
-    title: 'E-commerce Storefront',
-    description:
-      'A premium outdoor gear storefront with product filtering, cart, and responsive product pages.',
-    image: '/projects/summit-supply.png',
-    tech: ['React', 'API Integration', 'Cart Functionality'],
-    liveUrl: 'https://summit-supply.vercel.app/',
   },
 ]
