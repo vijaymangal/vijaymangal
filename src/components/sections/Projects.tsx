@@ -13,6 +13,8 @@ import { publicAsset } from '@/utils/assets'
 const viewAllProjectsClassName =
   'inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white/[0.02] px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-accent/40 hover:bg-accent/5'
 
+const homeProjects = projects.slice(0, 3)
+
 export function Projects() {
   return (
     <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
@@ -38,7 +40,7 @@ export function Projects() {
           viewport={{ once: true, margin: '-60px' }}
           className="divide-y divide-[var(--color-border)]"
         >
-          {projects.map((project, index) => {
+          {homeProjects.map((project, index) => {
             const reversed = index % 2 === 1
             const hasLiveUrl = project.liveUrl !== '#'
 
