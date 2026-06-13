@@ -3,9 +3,10 @@ import { ArrowUpRight } from 'lucide-react'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Container } from '@/components/layout/Container'
-import { Badge } from '@/components/ui/Badge'
-import { TiltCard } from '@/components/effects/TiltCard'
+import { Button } from '@/components/ui/Button'
 import { projects } from '@/data/projects'
+import { fadeUp, staggerContainer } from '@/utils/motion'
+import { cn } from '@/utils/cn'
 
 export function Projects() {
   return (
@@ -16,56 +17,116 @@ export function Projects() {
           label="Work"
           headingId="projects-heading"
           title="Selected projects"
-          description="A snapshot of the kind of products I build, from dashboards to marketing sites."
+          description="Case studies from recent builds, spanning marketing sites, SaaS dashboards, and product UI."
         />
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {projects.map((project, index) => (
-            <TiltCard key={project.id}>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="divide-y divide-[var(--color-border)]"
+        >
+          {projects.map((project, index) => {
+            const reversed = index % 2 === 1
+            const hasLiveUrl = project.liveUrl !== '#'
+
+            return (
               <motion.article
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="surface-interactive group flex h-full flex-col overflow-hidden rounded-2xl"
+                key={project.id}
+                variants={fadeUp}
+                className="grid gap-8 py-12 first:pt-0 last:pb-0 md:grid-cols-12 md:items-center md:gap-10 md:py-14"
               >
-                <div className="relative aspect-[16/10] overflow-hidden bg-[#0b1120]">
-                  <img
-                    src={project.image}
-                    alt={`${project.title} website preview`}
-                    className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.03]"
-                    loading="lazy"
-                  />
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/[0.06]"
-                  />
+                <div className={cn('md:col-span-7', reversed && 'md:order-2')}>
+                  <a
+                    href={hasLiveUrl ? project.liveUrl : undefined}
+                    target={hasLiveUrl ? '_blank' : undefined}
+                    rel={hasLiveUrl ? 'noopener noreferrer' : undefined}
+                    className={cn(
+                      'surface group relative block overflow-hidden rounded-2xl',
+                      !hasLiveUrl && 'pointer-events-none'
+                    )}
+                    aria-label={hasLiveUrl ? `View ${project.title} live demo` : undefined}
+                  >
+                    <div className="aspect-[16/10] overflow-hidden bg-[#0b1120]">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} website preview`}
+                        className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                    />
+
+                    {hasLiveUrl && (
+                      <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-bg/80 px-3 py-1.5 text-xs font-medium text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                        View live site
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </span>
+                    )}
+                  </a>
                 </div>
-                <div className="flex flex-1 flex-col p-5">
-                  <h3 className="font-semibold text-white">{project.title}</h3>
-                  <div className="mt-2 flex flex-wrap gap-1.5">
-                    {project.tech.map((t) => (
-                      <Badge key={t}>{t}</Badge>
-                    ))}
+
+                <div className={cn('md:col-span-5', reversed && 'md:order-1')}>
+                  <div className="flex items-center justify-between gap-4">
+                    <span className="font-mono text-xs font-medium text-accent">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    {hasLiveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-muted transition-colors hover:text-accent-soft"
+                      >
+                        Live demo
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    )}
                   </div>
-                  <p className="mt-3 flex-1 text-base leading-relaxed text-muted">
+
+                  <h3 className="text-display mt-4 text-2xl text-white md:text-3xl">
+                    {project.title}
+                  </h3>
+
+                  <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
                     {project.description}
                   </p>
-                  <div className="mt-5 text-sm font-medium">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-accent-soft hover:text-white"
-                    >
-                      Demo <ArrowUpRight className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
+
+                  <ul className="mt-5 flex flex-wrap gap-2">
+                    {project.tech.map((tech) => (
+                      <li key={tech}>
+                        <span className="inline-flex items-center rounded-full bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-white/90">
+                          {tech}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {hasLiveUrl && (
+                    <div className="mt-8">
+                      <Button
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        variant="outline"
+                        size="sm"
+                        className="gap-1.5"
+                      >
+                        View project
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </motion.article>
-            </TiltCard>
-          ))}
-        </div>
+            )
+          })}
+        </motion.div>
       </Container>
     </SectionWrapper>
   )

@@ -44,6 +44,7 @@ function writeSeoFiles(targetDir: string) {
 }
 
 export default defineConfig({
+  base: process.env.VITE_BASE_PATH || '/',
   plugins: [
     react(),
     tailwindcss(),
@@ -53,8 +54,14 @@ export default defineConfig({
         copyOgImage(path.resolve(__dirname, 'public'))
       },
       closeBundle() {
-        copyOgImage(path.resolve(__dirname, 'dist'))
-        writeSeoFiles(path.resolve(__dirname, 'dist'))
+        const distDir = path.resolve(__dirname, 'dist')
+        copyOgImage(distDir)
+        writeSeoFiles(distDir)
+
+        const indexPath = path.join(distDir, 'index.html')
+        if (existsSync(indexPath)) {
+          copyFileSync(indexPath, path.join(distDir, '404.html'))
+        }
       },
     },
   ],
