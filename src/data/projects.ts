@@ -23,9 +23,9 @@ export const projects: Project[] = [
     id: 'ecommerce-storefront',
     title: 'E-commerce Storefront',
     description:
-      'A responsive shopping interface with filtering and product pages.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80',
+      'A premium outdoor gear storefront with product filtering, cart, and responsive product pages.',
+    image: '/projects/summit-supply.png',
     tech: ['React', 'API Integration', 'Cart Functionality'],
-    liveUrl: '#',
+    liveUrl: 'https://summit-supply.vercel.app/',
   },
 ]
