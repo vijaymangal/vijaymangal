@@ -8,7 +8,7 @@ export const siteConfig = {
   description:
     'Senior UI/UX Engineer at Deloitte with 14+ years of experience in frontend development, UI/UX design, and responsive web applications. Based in Jaipur, India.',
   shortDescription:
-    'Senior UI/UX Engineer at Deloitte. 14+ years building enterprise web products with React, Figma, and Lightning Web Components.',
+    'Senior UI/UX Engineer at Deloitte. 14 years in React, Figma, and Lightning Web Components.',
   url: (import.meta.env.VITE_SITE_URL as string | undefined)?.replace(/\/$/, '') || defaultSiteUrl,
   locale: 'en_IN',
   email: contactInfo.email,

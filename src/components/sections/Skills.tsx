@@ -22,7 +22,7 @@ export function Skills() {
           label="Skills"
           headingId="skills-heading"
           title="Tools I work with"
-          description="Technologies I use daily to ship reliable, beautiful frontends."
+          description="React, LWC, Figma, and the stack I use most weeks at work."
         />
 
         <motion.div

@@ -5,30 +5,30 @@ export const services: Service[] = [
     id: 'ui-ux',
     title: 'UI/UX Development',
     description:
-      'End-to-end UI/UX lifecycle, from concept, design, and prototyping through frontend implementation and production support.',
+      'From early wireframes through shipped screens: layout, interaction states, and handoff-ready frontend work.',
   },
   {
     id: 'react-lwc',
     title: 'React & Lightning Web Components',
     description:
-      'Building responsive, user-focused web applications with ReactJS, SFDC LWC, and modern frontend best practices.',
+      'Day-to-day work in React and Salesforce LWC for enterprise web apps, with attention to responsive layout and maintainable markup.',
   },
   {
     id: 'design-systems',
     title: 'Design Systems & Standards',
     description:
-      'Improving design reusability, maintaining UI standards, and delivering consistent, client-ready experiences.',
+      'Reusable components, shared spacing and type rules, and UI patterns teams can repeat across products.',
   },
   {
     id: 'prototyping',
     title: 'Prototyping & Mockups',
     description:
-      'Creating mockups in Figma and Adobe tools, translating designs into pixel-perfect, production-ready interfaces.',
+      'Figma and Adobe mockups translated into working HTML/CSS, with a close match to the approved design.',
   },
   {
     id: 'consulting',
     title: 'Team Guidance & Delivery',
     description:
-      'Providing guidance on design quality, usability, collaboration, and zero-defect execution across cross-functional teams.',
+      'Working with designers, BAs, and engineers on reviews, usability fixes, and keeping UI work on track before release.',
   },
 ]

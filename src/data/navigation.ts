@@ -6,7 +6,6 @@ export const navigation: NavItem[] = [
   { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'projects', label: 'Projects', href: '#projects' },
   { id: 'services', label: 'Services', href: '#services' },
-  { id: 'testimonials', label: 'Testimonials', href: '#testimonials' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ]
 

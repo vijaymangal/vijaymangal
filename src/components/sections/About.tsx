@@ -18,18 +18,18 @@ const certificationIcons: Record<string, LucideIcon> = {
 const highlights = [
   {
     icon: Briefcase,
-    title: 'Enterprise Products',
-    text: 'Leading UI/UX development for Deloitte, delivering client-ready digital experiences across web applications.',
+    title: 'Enterprise work',
+    text: 'UI/UX for Deloitte client products, mostly React and Lightning Web Components on long-running programs.',
   },
   {
     icon: Palette,
-    title: 'Design to Code',
-    text: 'Full UI/UX lifecycle from Figma mockups and prototyping through frontend implementation and production support.',
+    title: 'Design to code',
+    text: 'I take Figma files through to working UI: states, spacing, and components that match what design signed off.',
   },
   {
     icon: Users,
-    title: 'Cross-Functional Leadership',
-    text: 'Guiding teams on design quality, usability, and zero-defect delivery across enterprise web applications.',
+    title: 'Team collaboration',
+    text: 'Regular work with designers, BAs, and QA on reviews, fixes, and keeping UI ready for release.',
   },
 ]
 
@@ -44,8 +44,8 @@ export function About() {
           number="01"
           label="About"
           headingId="about-heading"
-          title="Engineering with intent"
-          description="Senior UI/UX Engineer with 14+ years in frontend development, UI/UX design, and responsive web application delivery."
+          title="About me"
+          description="14 years in frontend and UI/UX, currently at Deloitte in Jaipur."
         />
 
         <div className="grid gap-4 md:grid-cols-3">
@@ -79,13 +79,13 @@ export function About() {
               SFDC Lightning Web Components, and design tools including Figma and Adobe.
             </p>
             <p>
-              I manage the full UI/UX lifecycle, from concept and prototyping through frontend
-              implementation, with emphasis on usability, design quality, and client-ready assets.
+              I manage design handoff through implementation: prototypes, component builds, and
+              fixes before release, with an eye on usability and consistent UI across screens.
             </p>
             <p>
               I hold a <span className="font-medium text-white">B.Sc. in Biotechnology</span> from
-              the University of Rajasthan and continuously invest in certifications across UX design,
-              Scrum, and Salesforce.
+              the University of Rajasthan. Certifications in UX, Scrum, and Salesforce are listed
+              below.
             </p>
 
             <div className="pt-4">

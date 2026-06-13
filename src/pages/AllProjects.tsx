@@ -15,7 +15,7 @@ export default function AllProjects() {
     <>
       <Seo
         title="All Projects | Vijay Mangal"
-        description="Explore detailed case studies across e-commerce storefronts, business websites, and SaaS dashboard UI work by Vijay Mangal."
+        description="Personal UI builds and frontend experiments by Vijay Mangal, with live demos."
         path="/projects"
       />
 
@@ -33,8 +33,8 @@ export default function AllProjects() {
             number="03"
             label="Work"
             headingId="all-projects-heading"
-            title="All projects"
-            description="A closer look at recent builds, including goals, implementation highlights, and live demos."
+            title="Side projects"
+            description="Notes on each build: what I tried, what shipped, and links to the live demos."
           />
 
           <motion.div

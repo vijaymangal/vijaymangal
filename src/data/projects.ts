@@ -3,53 +3,53 @@ import type { Project } from '@/types'
 export const projects: Project[] = [
   {
     id: 'ecommerce-storefront',
-    title: 'E-commerce Storefront',
+    title: 'Summit Supply',
     description:
-      'A premium outdoor gear storefront with product filtering, cart, and responsive product pages.',
+      'Practice build: outdoor gear shop with filters, cart, and product pages.',
     overview:
-      'Summit Supply is a full-featured e-commerce experience built for outdoor enthusiasts. The storefront combines immersive product storytelling with practical shopping flows, including search, category filters, wishlists, and a persistent cart.',
+      'A personal UI exercise built around a fictional outdoor brand. I focused on catalog browsing, filter states, and keeping the cart usable on smaller screens.',
     highlights: [
-      'Product catalog with filtering, search, and category navigation',
-      'Cart and wishlist flows with responsive product detail pages',
-      'Dark, premium visual design with hero imagery and trust signals',
-      'Mobile-first layout optimized for browsing and checkout intent',
+      'Category filters and search across the product list',
+      'Cart and product detail flows in React',
+      'Dark layout with photography-led product pages',
+      'Built and deployed as a standalone demo',
     ],
     image: '/projects/summit-supply.png',
-    tech: ['React', 'API Integration', 'Cart Functionality'],
+    tech: ['React', 'Tailwind', 'Vercel'],
     liveUrl: 'https://summit-supply.vercel.app/',
   },
   {
     id: 'business-website',
-    title: 'Modern Business Website',
+    title: 'Elevate Digital',
     description:
-      'A sleek website for a fictional business with service pages and contact form.',
+      'Practice build: agency-style marketing site with services and contact sections.',
     overview:
-      'Elevate Digital is a marketing site for a fictional digital agency. It showcases service offerings, social proof, and conversion-focused CTAs through a polished dark interface with animated metrics and a performance dashboard preview.',
+      'A layout study for a made-up digital agency. The goal was a clear services story, readable type hierarchy, and a homepage that still works on mobile.',
     highlights: [
-      'Hero section with layered messaging and dual call-to-action paths',
-      'Service overview and credibility stats across the homepage',
-      'Dashboard-style visual mockup reinforcing product value',
-      'Responsive navigation with contact and project inquiry flows',
+      'Homepage with services, stats, and contact paths',
+      'Dashboard mockup block to break up long scroll sections',
+      'Responsive nav and section spacing',
+      'Deployed live for review',
     ],
     image: '/projects/elevate-digital.png',
-    tech: ['React', 'Tailwind', 'Responsive Design'],
+    tech: ['React', 'Tailwind', 'Vercel'],
     liveUrl: 'https://elevate-digital-red.vercel.app/',
   },
   {
     id: 'saas-dashboard',
-    title: 'SaaS Dashboard UI',
+    title: 'InsightFlow AI',
     description:
-      'A modern dashboard showcasing component architecture and data visualization.',
+      'Practice build: analytics dashboard with charts and sign-in screens.',
     overview:
-      'InsightFlow AI is a SaaS analytics dashboard concept focused on clarity, hierarchy, and data density. The interface demonstrates charting, KPI cards, authentication UI, and a scalable component system for product teams.',
+      'A UI concept for a SaaS analytics tool. I used it to test chart placement, KPI rows, and how dense a dashboard can get before it feels cluttered.',
     highlights: [
-      'Dashboard layout with KPI summaries and trend visualizations',
-      'Authentication and onboarding UI patterns for SaaS products',
-      'Modular component architecture for charts, tables, and filters',
-      'Consistent spacing, typography, and state styling across views',
+      'KPI row and chart layout on a single dashboard view',
+      'Sign-in and onboarding screen patterns',
+      'Reusable card and table components',
+      'Next.js app deployed for demo',
     ],
     image: '/projects/insightflow-ai.png',
-    tech: ['Next.js', 'Charts', 'Authentication UI'],
+    tech: ['Next.js', 'Charts', 'Tailwind'],
     liveUrl: 'https://insightflow-ai-mu.vercel.app/',
   },
 ]

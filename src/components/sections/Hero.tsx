@@ -56,9 +56,9 @@ export function Hero() {
             </motion.h1>
 
             <motion.p variants={item} className="mt-6 max-w-lg text-lg text-muted md:text-xl">
-              Senior UI/UX Engineer with 14+ years building responsive web applications, leading
-              UI/UX for <span className="font-medium text-white">enterprise products at Deloitte</span>{' '}
-              with a focus on usability and design quality.
+              14 years building web UI for enterprise products. I lead frontend and UI/UX work at{' '}
+              <span className="font-medium text-white">Deloitte</span>, mainly in React and
+              Lightning Web Components.
             </motion.p>
 
             <motion.div variants={item} className="mt-4 flex items-center gap-2 text-base text-muted">

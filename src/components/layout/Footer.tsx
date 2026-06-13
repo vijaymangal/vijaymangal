@@ -19,8 +19,8 @@ export function Footer({ className }: FooterProps) {
           <div>
             <Logo size="md" />
             <p className="text-display mt-6 text-2xl text-white md:text-3xl">
-              Let&apos;s build something
-              <span className="text-gradient"> remarkable.</span>
+              Based in Jaipur.
+              <span className="text-gradient"> Say hello.</span>
             </p>
             <a
               href={`mailto:${contactInfo.email}`}

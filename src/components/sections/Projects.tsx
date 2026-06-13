@@ -21,8 +21,8 @@ export function Projects() {
           number="03"
           label="Work"
           headingId="projects-heading"
-          title="Selected projects"
-          description="Case studies from recent builds, spanning marketing sites, SaaS dashboards, and product UI."
+          title="Side projects"
+          description="Personal UI builds and layout experiments, deployed so you can click through them."
           action={
             <Link to="/projects" className={viewAllProjectsClassName}>
               View all projects

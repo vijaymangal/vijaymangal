@@ -6,27 +6,27 @@ export const timeline: TimelineItem[] = [
     year: '2021',
     title: 'Senior Frontend Engineer at Deloitte',
     description:
-      'Leading UI/UX development for enterprise products, managing the full design-to-delivery lifecycle and client-ready digital experiences.',
+      'UI/UX for enterprise web products: React and LWC work, design reviews, and frontend delivery with cross-functional teams.',
   },
   {
     id: '2',
     year: '2019',
     title: 'UI/UX Developer at Wipro',
     description:
-      'Built custom web applications with SFDC Lightning Web Components, HTML5, CSS3, and SASS, focused on usability and performance.',
+      'Built Salesforce LWC and web UIs with HTML5, CSS3, and SASS, with a focus on layout consistency and browser support.',
   },
   {
     id: '3',
     year: '2015',
     title: 'Senior UI Developer at Ranosys Technologies',
     description:
-      'Designed responsive web pages with HTML5, CSS3, and jQuery; resolved cross-browser issues and delivered zero-defect UI execution.',
+      'Responsive pages in HTML5, CSS3, and jQuery; fixed cross-browser issues and supported releases through QA.',
   },
   {
     id: '4',
     year: '2012',
     title: 'Website Designer at Teknologie Koncepts',
     description:
-      'Created mockups and converted designs into functional web pages; collaborated with clients from requirements through delivery.',
+      'Mockups for clients and front-end builds from approved designs through to launch.',
   },
 ]

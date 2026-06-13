@@ -30,8 +30,8 @@ export function Services() {
           number="04"
           label="Services"
           headingId="services-heading"
-          title="How I can help"
-          description="Whether you need a full build or targeted frontend expertise, I've got you covered."
+          title="What I do"
+          description="The kind of work I handle on enterprise teams and client engagements."
         />
 
         <motion.div

@@ -4,19 +4,19 @@ export const skillCategories: SkillCategory[] = [
   {
     id: 'frontend',
     title: 'Frontend Development',
-    description: 'Building responsive, performant interfaces with modern JavaScript and CSS.',
+    description: 'React, JavaScript, HTML/CSS, and the styling tools I use on client projects.',
     skills: ['ReactJS', 'JavaScript', 'HTML5', 'CSS3', 'SCSS', 'LESS', 'Bootstrap', 'jQuery'],
   },
   {
     id: 'design',
     title: 'Design & UX',
-    description: 'User-centered design from wireframes and mockups through polished UI delivery.',
-    skills: ['Figma', 'Adobe Tools', 'User-Centered Design'],
+    description: 'Wireframes and mockups in Figma and Adobe, then into production UI.',
+    skills: ['Figma', 'Adobe Tools', 'Wireframing', 'Prototyping'],
   },
   {
     id: 'enterprise',
     title: 'Enterprise Platforms',
-    description: 'Client-ready experiences on Salesforce and enterprise web applications.',
+    description: 'Salesforce Lightning Web Components and large-team delivery workflows.',
     skills: ['SFDC LWC'],
   },
 ]

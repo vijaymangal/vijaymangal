@@ -6,7 +6,6 @@ import {
   Instagram,
   Download,
   ArrowUpRight,
-  Clock,
 } from 'lucide-react'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -29,11 +28,11 @@ export function Contact() {
     <SectionWrapper id="contact" ariaLabelledBy="contact-heading">
       <Container>
         <SectionHeading
-          number="06"
+          number="05"
           label="Contact"
           headingId="contact-heading"
-          title="Let's work together"
-          description="Open to full-time roles, contract work, and UI/UX consulting. Reach out via email or social. I typically respond within 48 hours."
+          title="Get in touch"
+          description="Open to full-time roles and select contract or consulting work. Email or LinkedIn is best."
         />
 
         <motion.div
@@ -55,7 +54,7 @@ export function Contact() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
                 </span>
-                <span className="text-xs font-medium text-emerald-300">Available for new opportunities</span>
+                <span className="text-xs font-medium text-emerald-300">Open to new roles</span>
               </div>
 
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -88,10 +87,6 @@ export function Contact() {
               </div>
 
               <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-[var(--color-border)] pt-6 sm:flex-row sm:items-center">
-                <div className="flex items-center gap-2 text-sm text-muted">
-                  <Clock className="h-3.5 w-3.5 shrink-0 text-accent-soft" />
-                  <span>Response within 48 hours</span>
-                </div>
                 <Magnetic strength={0.15}>
                   <Button href={resumeUrl} download variant="outline" className="gap-2">
                     <Download className="h-4 w-4" />
