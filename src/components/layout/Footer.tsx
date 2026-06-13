@@ -3,12 +3,17 @@ import { socialLinks, contactInfo } from '@/data/social'
 import { SocialIcon } from '@/components/layout/SocialIcon'
 import { Container } from '@/components/layout/Container'
 import { Logo } from '@/components/layout/Logo'
+import { cn } from '@/utils/cn'
 
-export function Footer() {
+interface FooterProps {
+  className?: string
+}
+
+export function Footer({ className }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-[var(--color-border)] bg-surface">
+    <footer className={cn('border-t border-[var(--color-border)] bg-surface/80 backdrop-blur-sm', className)}>
       <Container className="py-14 md:py-16">
         <div className="flex flex-col gap-10 md:flex-row md:items-end md:justify-between">
           <div>

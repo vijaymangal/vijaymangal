@@ -26,6 +26,8 @@ export interface Project {
   id: string
   title: string
   description: string
+  overview: string
+  highlights: string[]
   image: string
   tech: string[]
   liveUrl: string

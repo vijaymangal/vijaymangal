@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer'
 import { PageBackground } from '@/components/layout/PageBackground'
 import { ScrollProgress } from '@/components/effects/ScrollProgress'
 import { CursorGlow } from '@/components/effects/CursorGlow'
+import { ScrollToTop } from '@/components/layout/ScrollToTop'
 
 interface MainLayoutProps {
   children: ReactNode
@@ -12,6 +13,7 @@ interface MainLayoutProps {
 export function MainLayout({ children }: MainLayoutProps) {
   return (
     <>
+      <ScrollToTop />
       <PageBackground />
       <ScrollProgress />
       <CursorGlow />
@@ -22,8 +24,14 @@ export function MainLayout({ children }: MainLayoutProps) {
         Skip to main content
       </a>
       <Navbar />
-      <main id="main-content">{children}</main>
-      <Footer />
+      <main id="main-content" className="relative z-10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 min-h-full bg-grid opacity-70"
+        />
+        <div className="relative">{children}</div>
+      </main>
+      <Footer className="relative z-10" />
     </>
   )
 }

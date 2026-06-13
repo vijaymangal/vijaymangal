@@ -6,8 +6,7 @@ export function PageBackground() {
   const reducedMotion = useReducedMotion()
 
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
-      <div className="bg-grid absolute inset-0 opacity-60" />
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
       <motion.div
         className="glow-accent absolute inset-0"
         style={{ '--glow-x': '20%', '--glow-y': '10%' } as CSSProperties}

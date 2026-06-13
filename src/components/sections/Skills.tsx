@@ -15,7 +15,7 @@ const categoryIcons: Record<string, LucideIcon> = {
 
 export function Skills() {
   return (
-    <SectionWrapper id="skills" className="bg-section-skills" ariaLabelledBy="skills-heading">
+    <SectionWrapper id="skills" ariaLabelledBy="skills-heading">
       <Container>
         <SectionHeading
           number="02"

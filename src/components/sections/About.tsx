@@ -37,7 +37,6 @@ export function About() {
   return (
     <SectionWrapper
       id="about"
-      className="bg-section-about"
       ariaLabelledBy="about-heading"
     >
       <Container>

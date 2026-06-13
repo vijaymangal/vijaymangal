@@ -26,7 +26,7 @@ const channelIcons: Record<ContactChannel['icon'], typeof Mail> = {
 
 export function Contact() {
   return (
-    <SectionWrapper id="contact" className="bg-section-contact" ariaLabelledBy="contact-heading">
+    <SectionWrapper id="contact" ariaLabelledBy="contact-heading">
       <Container>
         <SectionHeading
           number="06"

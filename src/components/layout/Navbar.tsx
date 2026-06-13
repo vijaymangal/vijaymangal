@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { navigation } from '@/data/navigation'
@@ -13,9 +14,11 @@ import { Logo } from '@/components/layout/Logo'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
   const activeSection = useActiveSection(sectionIds)
   const scrollTo = useScrollTo()
   const scrolled = useScrolled()
+  const isHome = location.pathname === '/'
 
   const handleNavClick = (href: string) => {
     scrollTo(href)
@@ -33,59 +36,77 @@ export function Navbar() {
     >
       <Container>
         <nav aria-label="Main navigation" className="flex h-16 items-center justify-between md:h-[4.5rem]">
-          <a
-            href="#hero"
+          <Link
+            to="/"
             onClick={(e) => {
-              e.preventDefault()
-              handleNavClick('#hero')
+              if (isHome) {
+                e.preventDefault()
+                handleNavClick('#hero')
+              }
             }}
             aria-label="Vijay Mangal home"
             className="hover:opacity-90"
           >
             <Logo size="sm" />
-          </a>
+          </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((item) => (
               <li key={item.id}>
-                <a
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    handleNavClick(item.href)
-                  }}
-                  className={cn(
-                    'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors',
-                    activeSection === item.id
-                      ? 'text-white'
-                      : 'text-muted hover:text-white'
-                  )}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-full bg-white/[0.06]"
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                </a>
+                {isHome ? (
+                  <a
+                    href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleNavClick(item.href)
+                    }}
+                    className={cn(
+                      'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors',
+                      activeSection === item.id
+                        ? 'text-white'
+                        : 'text-muted hover:text-white'
+                    )}
+                  >
+                    {item.label}
+                    {activeSection === item.id && (
+                      <motion.span
+                        layoutId="nav-pill"
+                        className="absolute inset-0 -z-10 rounded-full bg-white/[0.06]"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    )}
+                  </a>
+                ) : (
+                  <Link
+                    to={`/${item.href}`}
+                    className="relative rounded-full px-3.5 py-2 text-sm font-medium text-muted transition-colors hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
 
           <div className="hidden lg:block">
-            <Button
-              href="#contact"
-              size="sm"
-              onClick={(e) => {
-                e.preventDefault()
-                handleNavClick('#contact')
-              }}
-            >
-              Let&apos;s talk
-              <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-            </Button>
+            {isHome ? (
+              <Button
+                href="#contact"
+                size="sm"
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleNavClick('#contact')
+                }}
+              >
+                Let&apos;s talk
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </Button>
+            ) : (
+              <Button href="/#contact" size="sm">
+                Let&apos;s talk
+                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+              </Button>
+            )}
           </div>
 
           <button
@@ -111,19 +132,29 @@ export function Navbar() {
             <ul className="container-main flex flex-col gap-1 py-4">
               {navigation.map((item) => (
                 <li key={item.id}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      handleNavClick(item.href)
-                    }}
-                    className={cn(
-                      'block rounded-lg px-3 py-2.5 text-sm font-medium',
-                      activeSection === item.id ? 'text-accent-soft' : 'text-muted'
-                    )}
-                  >
-                    {item.label}
-                  </a>
+                  {isHome ? (
+                    <a
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        handleNavClick(item.href)
+                      }}
+                      className={cn(
+                        'block rounded-lg px-3 py-2.5 text-sm font-medium',
+                        activeSection === item.id ? 'text-accent-soft' : 'text-muted'
+                      )}
+                    >
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link
+                      to={item.href === '#hero' ? '/' : `/${item.href}`}
+                      onClick={() => setIsOpen(false)}
+                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted"
+                    >
+                      {item.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

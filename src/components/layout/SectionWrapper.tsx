@@ -20,7 +20,11 @@ export function SectionWrapper({
       aria-labelledby={ariaLabelledBy}
       className={cn('relative py-24 md:py-32', className)}
     >
-      {children}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(201,165,92,0.04),transparent_70%)]"
+      />
+      <div className="relative">{children}</div>
     </section>
   )
 }

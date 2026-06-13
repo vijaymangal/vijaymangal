@@ -24,7 +24,7 @@ const serviceIcons: Record<string, LucideIcon> = {
 
 export function Services() {
   return (
-    <SectionWrapper id="services" className="bg-section-services" ariaLabelledBy="services-heading">
+    <SectionWrapper id="services" ariaLabelledBy="services-heading">
       <Container>
         <SectionHeading
           number="04"

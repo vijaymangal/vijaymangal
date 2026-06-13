@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
@@ -7,10 +8,14 @@ import { Button } from '@/components/ui/Button'
 import { projects } from '@/data/projects'
 import { fadeUp, staggerContainer } from '@/utils/motion'
 import { cn } from '@/utils/cn'
+import { publicAsset } from '@/utils/assets'
+
+const viewAllProjectsClassName =
+  'inline-flex shrink-0 items-center justify-center gap-1.5 rounded-full border border-[var(--color-border)] bg-white/[0.02] px-4 py-2 text-sm font-semibold text-white transition-all duration-300 hover:border-accent/40 hover:bg-accent/5'
 
 export function Projects() {
   return (
-    <SectionWrapper id="projects" className="bg-section-projects" ariaLabelledBy="projects-heading">
+    <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
       <Container>
         <SectionHeading
           number="03"
@@ -18,6 +23,12 @@ export function Projects() {
           headingId="projects-heading"
           title="Selected projects"
           description="Case studies from recent builds, spanning marketing sites, SaaS dashboards, and product UI."
+          action={
+            <Link to="/projects" className={viewAllProjectsClassName}>
+              View all projects
+              <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          }
         />
 
         <motion.div
@@ -50,7 +61,7 @@ export function Projects() {
                   >
                     <div className="aspect-[16/10] overflow-hidden bg-[#0b1120]">
                       <img
-                        src={project.image}
+                        src={publicAsset(project.image)}
                         alt={`${project.title} website preview`}
                         className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
                         loading="lazy"
@@ -126,6 +137,22 @@ export function Projects() {
               </motion.article>
             )
           })}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-40px' }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-12 flex justify-center md:mt-16"
+        >
+          <Link
+            to="/projects"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-base font-semibold text-white shadow-[0_0_24px_-4px_rgba(201,165,92,0.45)] transition-all duration-300 hover:bg-accent-soft"
+          >
+            View all projects
+            <ArrowUpRight className="h-4 w-4" />
+          </Link>
         </motion.div>
       </Container>
     </SectionWrapper>

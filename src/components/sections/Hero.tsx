@@ -30,7 +30,7 @@ export function Hero() {
     <section
       id="hero"
       aria-label="Introduction"
-      className="relative min-h-screen overflow-hidden bg-section-hero pt-20 md:pt-24"
+      className="relative min-h-screen overflow-hidden pt-20 md:pt-24"
     >
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-15%,rgba(201,165,92,0.16),transparent_65%)]" />

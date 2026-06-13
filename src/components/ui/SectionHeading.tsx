@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/utils/cn'
 
@@ -9,6 +10,7 @@ interface SectionHeadingProps {
   description?: string
   align?: 'left' | 'center'
   className?: string
+  action?: ReactNode
 }
 
 export function SectionHeading({
@@ -19,6 +21,7 @@ export function SectionHeading({
   description,
   align = 'left',
   className,
+  action,
 }: SectionHeadingProps) {
   return (
     <motion.header
@@ -32,21 +35,33 @@ export function SectionHeading({
         className
       )}
     >
-      <div className={cn('flex items-center gap-3', align === 'center' && 'justify-center')}>
-        <span className="font-mono text-xs font-medium text-accent">{number}</span>
-        <span className="text-xs font-semibold uppercase tracking-[0.15em] text-accent-soft">
-          {label}
-        </span>
-      </div>
-      <h2
-        id={headingId}
-        className="text-display mt-4 text-3xl text-white md:text-4xl lg:text-5xl"
+      <div
+        className={cn(
+          'flex flex-col gap-6',
+          action ? 'md:flex-row md:items-end md:justify-between' : undefined,
+          align === 'center' && action ? 'md:flex-col md:items-center' : undefined
+        )}
       >
-        {title}
-      </h2>
-      {description && (
-        <p className="mt-4 text-lg text-muted md:text-xl">{description}</p>
-      )}
+        <div className={cn(align === 'center' && 'w-full')}>
+          <div className={cn('flex items-center gap-3', align === 'center' && 'justify-center')}>
+            <span className="font-mono text-xs font-medium text-accent">{number}</span>
+            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-accent-soft">
+              {label}
+            </span>
+          </div>
+          <h2
+            id={headingId}
+            className="text-display mt-4 text-3xl text-white md:text-4xl lg:text-5xl"
+          >
+            {title}
+          </h2>
+          {description && (
+            <p className="mt-4 text-lg text-muted md:text-xl">{description}</p>
+          )}
+        </div>
+
+        {action}
+      </div>
     </motion.header>
   )
 }

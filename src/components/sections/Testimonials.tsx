@@ -7,7 +7,7 @@ import { fadeUp, staggerContainer } from '@/utils/motion'
 
 export function Testimonials() {
   return (
-    <SectionWrapper id="testimonials" className="bg-section-testimonials" ariaLabelledBy="testimonials-heading">
+    <SectionWrapper id="testimonials" ariaLabelledBy="testimonials-heading">
       <Container>
         <SectionHeading
           number="05"
