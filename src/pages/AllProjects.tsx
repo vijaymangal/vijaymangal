@@ -15,8 +15,8 @@ export default function AllProjects() {
   return (
     <>
       <Seo
-        title="All Projects | Vijay Mangal"
-        description="Personal UI builds and frontend experiments by Vijay Mangal, with live demos."
+        title="Side Projects | Vijay Mangal"
+        description="Explore UI builds and frontend experiments by Vijay Mangal, including SkyRoute, Summit Supply, Elevate Digital, and InsightFlow AI with live demos."
         path="/projects"
       />
 

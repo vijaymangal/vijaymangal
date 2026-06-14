@@ -4,10 +4,12 @@ import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
 import { copyFileSync, existsSync, mkdirSync, writeFileSync } from 'fs'
 
-const siteUrl = (process.env.VITE_SITE_URL || 'https://vijaymangal.github.io/vijaymangal').replace(
-  /\/$/,
-  ''
-)
+const siteUrl = (process.env.VITE_SITE_URL || 'https://vijaymangal.vercel.app').replace(/\/$/, '')
+
+const sitemapRoutes = [
+  { path: '/', changefreq: 'monthly', priority: '1.0' },
+  { path: '/projects', changefreq: 'monthly', priority: '0.8' },
+]
 
 const profilePhotoCandidates = [
   path.resolve(__dirname, 'src/assets/profile-photo.JPG'),
@@ -25,20 +27,29 @@ function copyOgImage(targetDir: string) {
 }
 
 function writeSeoFiles(targetDir: string) {
+  const lastmod = new Date().toISOString().slice(0, 10)
+
   writeFileSync(
     path.join(targetDir, 'robots.txt'),
     `User-agent: *\nAllow: /\n\nSitemap: ${siteUrl}/sitemap.xml\n`
   )
 
+  const urlEntries = sitemapRoutes
+    .map(
+      (route) => `  <url>
+    <loc>${siteUrl}${route.path === '/' ? '/' : route.path}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
+  </url>`
+    )
+    .join('\n')
+
   writeFileSync(
     path.join(targetDir, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${siteUrl}/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
+${urlEntries}
 </urlset>\n`
   )
 }

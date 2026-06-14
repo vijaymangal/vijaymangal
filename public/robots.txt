@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vijaymangal.github.io/vijaymangal/sitemap.xml
+Sitemap: https://vijaymangal.vercel.app/sitemap.xml

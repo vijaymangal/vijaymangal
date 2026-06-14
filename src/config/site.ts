@@ -1,6 +1,6 @@
 import { contactInfo } from '@/data/social'
 
-const defaultSiteUrl = 'https://vijaymangal.github.io/vijaymangal'
+export const defaultSiteUrl = 'https://vijaymangal.vercel.app'
 
 export const siteConfig = {
   name: 'Vijay Mangal',
@@ -30,15 +30,24 @@ export const siteConfig = {
     'Lightning Web Components',
     'Portfolio',
   ],
-  sameAs: [
-    contactInfo.linkedin,
-    contactInfo.github,
-    contactInfo.instagram,
-  ],
+  sameAs: [contactInfo.linkedin, contactInfo.github, contactInfo.instagram],
   ogImagePath: '/og-image.jpg',
+  ogImageWidth: 640,
+  ogImageHeight: 640,
 } as const
+
+export const sitemapRoutes = [
+  { path: '/', changefreq: 'monthly', priority: '1.0' },
+  { path: '/projects', changefreq: 'monthly', priority: '0.8' },
+] as const
 
 export function absoluteUrl(path = '/') {
   if (path.startsWith('http')) return path
   return `${siteConfig.url}${path.startsWith('/') ? path : `/${path}`}`
+}
+
+export function siteAsset(path: string) {
+  const base = import.meta.env.BASE_URL || '/'
+  const normalizedPath = path.replace(/^\//, '')
+  return `${base}${normalizedPath}`
 }
