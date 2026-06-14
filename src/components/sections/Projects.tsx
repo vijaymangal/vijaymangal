@@ -20,7 +20,6 @@ export function Projects() {
     <SectionWrapper id="projects" ariaLabelledBy="projects-heading">
       <Container>
         <SectionHeading
-          number="03"
           label="Work"
           headingId="projects-heading"
           title="Side projects"
@@ -85,11 +84,8 @@ export function Projects() {
                 </div>
 
                 <div className={cn('md:col-span-5', reversed && 'md:order-1')}>
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="font-mono text-xs font-medium text-accent">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    {hasLiveUrl && (
+                  {hasLiveUrl && (
+                    <div className="flex justify-end">
                       <a
                         href={project.liveUrl}
                         target="_blank"
@@ -99,10 +95,10 @@ export function Projects() {
                         Live demo
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </a>
-                    )}
-                  </div>
+                    </div>
+                  )}
 
-                  <h3 className="text-display mt-4 text-2xl text-white md:text-3xl">
+                  <h3 className={cn('text-display text-2xl text-white md:text-3xl', hasLiveUrl ? 'mt-4' : 'mt-0')}>
                     {project.title}
                   </h3>
 

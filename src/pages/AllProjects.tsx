@@ -36,7 +36,6 @@ export default function AllProjects() {
           </Link>
 
           <SectionHeading
-            number="03"
             label="Work"
             headingId="all-projects-heading"
             title="Side projects"
@@ -90,11 +89,8 @@ export default function AllProjects() {
                   </div>
 
                   <div className={cn('md:col-span-5', reversed && 'md:order-1')}>
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="font-mono text-xs font-medium text-accent">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      {hasLiveUrl && (
+                    {hasLiveUrl && (
+                      <div className="flex justify-end">
                         <a
                           href={project.liveUrl}
                           target="_blank"
@@ -104,10 +100,10 @@ export default function AllProjects() {
                           Live demo
                           <ArrowUpRight className="h-3.5 w-3.5" />
                         </a>
-                      )}
-                    </div>
+                      </div>
+                    )}
 
-                    <h2 className="text-display mt-4 text-2xl text-white md:text-3xl">
+                    <h2 className={cn('text-display text-2xl text-white md:text-3xl', hasLiveUrl ? 'mt-4' : 'mt-0')}>
                       {project.title}
                     </h2>
 

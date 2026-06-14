@@ -41,7 +41,6 @@ export function About() {
     >
       <Container>
         <SectionHeading
-          number="01"
           label="About"
           headingId="about-heading"
           title="About me"
@@ -155,7 +154,7 @@ export function About() {
             viewport={{ once: true, margin: '-40px' }}
             className="divide-y divide-[var(--color-border)]"
           >
-            {certificationGroups.map((group, index) => {
+            {certificationGroups.map((group) => {
               const Icon = certificationIcons[group.id] ?? Award
 
               return (
@@ -169,14 +168,9 @@ export function About() {
                       <Icon className="h-4 w-4" strokeWidth={1.75} />
                     </span>
                     <div className="min-w-0">
-                      <div className="flex items-start justify-between gap-3">
-                        <h4 className="text-sm font-semibold text-white md:text-base">
+                      <h4 className="text-sm font-semibold text-white md:text-base">
                           {group.title}
                         </h4>
-                        <span className="shrink-0 font-mono text-xs text-muted">
-                          {String(index + 1).padStart(2, '0')}
-                        </span>
-                      </div>
                       <p className="mt-1 text-sm text-muted">
                         {group.certifications.length} certification
                         {group.certifications.length === 1 ? '' : 's'}

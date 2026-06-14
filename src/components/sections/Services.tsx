@@ -27,7 +27,6 @@ export function Services() {
     <SectionWrapper id="services" ariaLabelledBy="services-heading">
       <Container>
         <SectionHeading
-          number="04"
           label="Services"
           headingId="services-heading"
           title="What I do"
@@ -54,14 +53,9 @@ export function Services() {
                   isTopRow ? 'md:col-span-2' : 'md:col-span-3'
                 )}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <span className="icon-chip flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] text-accent-soft">
-                    <Icon className="h-4 w-4" strokeWidth={1.75} />
-                  </span>
-                  <span className="font-mono text-xs text-accent/50">
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
+                <span className="icon-chip flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] text-accent-soft">
+                  <Icon className="h-4 w-4" strokeWidth={1.75} />
+                </span>
 
                 <h3 className="mt-5 text-lg font-semibold text-white">
                   {service.title}

@@ -18,7 +18,6 @@ export function Skills() {
     <SectionWrapper id="skills" ariaLabelledBy="skills-heading">
       <Container>
         <SectionHeading
-          number="02"
           label="Skills"
           headingId="skills-heading"
           title="Tools I work with"
@@ -32,7 +31,7 @@ export function Skills() {
           viewport={{ once: true, margin: '-60px' }}
           className="divide-y divide-[var(--color-border)]"
         >
-          {skillCategories.map((category, index) => {
+          {skillCategories.map((category) => {
             const Icon = categoryIcons[category.id] ?? Code2
 
             return (
@@ -46,14 +45,9 @@ export function Skills() {
                     <Icon className="h-4 w-4" strokeWidth={1.75} />
                   </span>
                   <div className="min-w-0">
-                    <div className="flex items-start justify-between gap-3">
                       <h3 className="text-sm font-semibold text-white md:text-base">
                         {category.title}
                       </h3>
-                      <span className="shrink-0 font-mono text-xs text-accent/40">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted md:text-base">
                       {category.description}
                     </p>

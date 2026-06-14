@@ -28,7 +28,6 @@ export function Contact() {
     <SectionWrapper id="contact" ariaLabelledBy="contact-heading">
       <Container>
         <SectionHeading
-          number="05"
           label="Contact"
           headingId="contact-heading"
           title="Get in touch"

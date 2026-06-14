@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 import { cn } from '@/utils/cn'
 
 interface SectionHeadingProps {
-  number: string
   label: string
   title: string
   headingId?: string
@@ -14,7 +13,6 @@ interface SectionHeadingProps {
 }
 
 export function SectionHeading({
-  number,
   label,
   title,
   headingId,
@@ -43,11 +41,8 @@ export function SectionHeading({
         )}
       >
         <div className={cn(align === 'center' && 'w-full')}>
-          <div className={cn('flex items-center gap-3', align === 'center' && 'justify-center')}>
-            <span className="font-mono text-xs font-medium text-accent">{number}</span>
-            <span className="text-xs font-semibold uppercase tracking-[0.15em] text-accent-soft">
-              {label}
-            </span>
+          <div className={cn('section-label', align === 'center' && 'justify-center')}>
+            {label}
           </div>
           <h2
             id={headingId}

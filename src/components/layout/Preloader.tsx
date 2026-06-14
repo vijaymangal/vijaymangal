@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Logo } from '@/components/layout/Logo'
+import { VmWatermark } from '@/components/effects/VmWatermark'
 
 interface PreloaderProps {
   isLoading: boolean
@@ -22,21 +23,22 @@ export function Preloader({ isLoading }: PreloaderProps) {
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(194, 65, 12,0.1),transparent_60%)]"
           />
+          <VmWatermark className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" />
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative text-center"
+            className="relative z-[1] text-center"
           >
-            <Logo size="lg" />
+            <Logo size="lg" className="text-white" />
             <p className="mt-4 text-xs font-medium uppercase tracking-[0.2em] text-muted">
               Senior UI/UX Engineer
             </p>
           </motion.div>
 
-          <div className="absolute bottom-12 left-1/2 w-44 -translate-x-1/2 md:bottom-16 md:w-52">
+          <div className="absolute bottom-12 left-1/2 z-[1] w-44 -translate-x-1/2 md:bottom-16 md:w-52">
             <div className="h-px overflow-hidden rounded-full bg-white/10">
               <motion.div
                 className="h-full origin-left bg-gradient-to-r from-accent to-accent-soft"

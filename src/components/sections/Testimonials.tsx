@@ -10,7 +10,6 @@ export function Testimonials() {
     <SectionWrapper id="testimonials" ariaLabelledBy="testimonials-heading">
       <Container>
         <SectionHeading
-          number="05"
           label="Testimonials"
           headingId="testimonials-heading"
           title="Kind words"
