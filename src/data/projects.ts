@@ -2,7 +2,7 @@ import type { Project } from '@/types'
 
 export const projects: Project[] = [
   {
-    id: 'flight-search',
+    id: 'sky-route',
     title: 'SkyRoute',
     description:
       'Flight search and tracking UI with route cards, destination grids, and saved trips.',
@@ -14,9 +14,26 @@ export const projects: Project[] = [
       'Frequently searched routes with typical economy pricing',
       'Track and Saved sections for status checks and saved fares',
     ],
-    image: '/projects/sky-route.png',
+    image: '/projects/sky-route-tawny.png',
     tech: ['React', 'Tailwind', 'Vercel'],
     liveUrl: 'https://sky-route-tawny.vercel.app/',
+  },
+  {
+    id: 'sky-route-companion',
+    title: 'SkyRoute Companion',
+    description:
+      'Authenticated flight companion with sign-in, home dashboard, trip tracking, and saved routes.',
+    overview:
+      'An expanded SkyRoute build with user sign-in and a home dashboard after login. The app covers search, track, and saved trips in a companion-style travel assistant flow.',
+    highlights: [
+      'Sign-in flow with protected home dashboard',
+      'Round-trip and one-way search with airport, date, and traveler inputs',
+      'Popular destinations and frequently searched routes',
+      'Track and Saved sections for status checks and saved fares',
+    ],
+    image: '/projects/sky-route-companion.png',
+    tech: ['React', 'Tailwind', 'Vercel'],
+    liveUrl: 'https://sky-route-companion.vercel.app/',
   },
   {
     id: 'ecommerce-storefront',
@@ -36,23 +53,6 @@ export const projects: Project[] = [
     liveUrl: 'https://summit-supply.vercel.app/',
   },
   {
-    id: 'business-website',
-    title: 'Elevate Digital',
-    description:
-      'Agency marketing site with services, portfolio, testimonials, and contact CTAs.',
-    overview:
-      'A layout study for a made-up digital agency. The homepage combines a performance dashboard mockup, services grid, featured work cards, client testimonials, and a final consultation CTA.',
-    highlights: [
-      'Hero with animated stats and performance overview mockup',
-      'Services and Why Choose Us sections with icon-led cards',
-      'Featured Work portfolio cards for fintech, healthcare, and e-commerce',
-      'Client testimonials and responsive Get Started / View Our Work CTAs',
-    ],
-    image: '/projects/elevate-digital.png',
-    tech: ['React', 'Tailwind', 'Vercel'],
-    liveUrl: 'https://elevate-digital-red.vercel.app/',
-  },
-  {
     id: 'saas-dashboard',
     title: 'InsightFlow AI',
     description:
@@ -68,5 +68,22 @@ export const projects: Project[] = [
     image: '/projects/insightflow-ai.png',
     tech: ['Next.js', 'Tailwind', 'Vercel'],
     liveUrl: 'https://insightflow-ai-mu.vercel.app/',
+  },
+  {
+    id: 'business-website',
+    title: 'Elevate Digital',
+    description:
+      'Agency marketing site with services, portfolio, testimonials, and contact CTAs.',
+    overview:
+      'A layout study for a made-up digital agency. The homepage combines a performance dashboard mockup, services grid, featured work cards, client testimonials, and a final consultation CTA.',
+    highlights: [
+      'Hero with animated stats and performance overview mockup',
+      'Services and Why Choose Us sections with icon-led cards',
+      'Featured Work portfolio cards for fintech, healthcare, and e-commerce',
+      'Client testimonials and responsive Get Started / View Our Work CTAs',
+    ],
+    image: '/projects/elevate-digital.png',
+    tech: ['React', 'Tailwind', 'Vercel'],
+    liveUrl: 'https://elevate-digital-red.vercel.app/',
   },
 ]
