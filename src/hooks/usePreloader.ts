@@ -1,36 +1,59 @@
 import { useEffect, useState } from 'react'
+import { loadBrandFont } from '@/utils/fonts'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
-const MIN_DURATION_MS = 1400
+const MIN_DURATION_MS = 3000
 
 export function usePreloader() {
   const reducedMotion = useReducedMotion()
   const [isLoading, setIsLoading] = useState(true)
+  const [fontsReady, setFontsReady] = useState(false)
 
   useEffect(() => {
     if (reducedMotion) {
+      setFontsReady(true)
       setIsLoading(false)
       return
     }
 
+    let cancelled = false
     const start = Date.now()
-    let timeoutId: ReturnType<typeof setTimeout>
+    let timeoutId: ReturnType<typeof setTimeout> | undefined
+    let fontsDone = false
+    let pageDone = document.readyState === 'complete'
 
-    const finish = () => {
+    const tryFinish = () => {
+      if (cancelled || !fontsDone || !pageDone) return
+
       const elapsed = Date.now() - start
       const remaining = Math.max(0, MIN_DURATION_MS - elapsed)
-      timeoutId = setTimeout(() => setIsLoading(false), remaining)
+      timeoutId = setTimeout(() => {
+        if (!cancelled) setIsLoading(false)
+      }, remaining)
     }
 
-    if (document.readyState === 'complete') {
-      finish()
+    loadBrandFont().then((ready) => {
+      if (cancelled) return
+      setFontsReady(ready)
+      fontsDone = true
+      tryFinish()
+    })
+
+    const onPageLoad = () => {
+      pageDone = true
+      tryFinish()
+    }
+
+    if (pageDone) {
+      tryFinish()
     } else {
-      window.addEventListener('load', finish, { once: true })
+      window.addEventListener('load', onPageLoad, { once: true })
     }
 
     return () => {
-      window.removeEventListener('load', finish)
-      clearTimeout(timeoutId)
+      cancelled = true
+      window.removeEventListener('load', onPageLoad)
+      if (timeoutId) clearTimeout(timeoutId)
     }
   }, [reducedMotion])
 
@@ -41,5 +64,5 @@ export function usePreloader() {
     }
   }, [isLoading])
 
-  return isLoading
+  return { isLoading, fontsReady }
 }

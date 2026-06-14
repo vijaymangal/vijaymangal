@@ -1,12 +1,16 @@
 import { lazy, Suspense } from 'react'
+import { motion } from 'framer-motion'
 import { Routes, Route } from 'react-router-dom'
 import { MainLayout } from '@/layouts/MainLayout'
 import { Preloader } from '@/components/layout/Preloader'
 import { Seo } from '@/components/seo/Seo'
 import { usePreloader } from '@/hooks/usePreloader'
+import { cn } from '@/utils/cn'
 
 const Home = lazy(() => import('@/pages/Home'))
 const AllProjects = lazy(() => import('@/pages/AllProjects'))
+
+const revealEase = [0.22, 1, 0.36, 1] as const
 
 function LoadingFallback() {
   return (
@@ -17,13 +21,25 @@ function LoadingFallback() {
 }
 
 export default function App() {
-  const isLoading = usePreloader()
+  const { isLoading, fontsReady } = usePreloader()
 
   return (
     <>
-      <Preloader isLoading={isLoading} />
+      <Preloader isLoading={isLoading} fontsReady={fontsReady} />
 
-      <div className={isLoading ? 'invisible' : 'visible'}>
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: isLoading ? 0 : 1,
+          y: isLoading ? 12 : 0,
+        }}
+        transition={{
+          duration: 0.75,
+          delay: isLoading ? 0 : 0.12,
+          ease: revealEase,
+        }}
+        className={cn(isLoading && 'pointer-events-none')}
+      >
         <MainLayout>
           <Suspense fallback={<LoadingFallback />}>
             <Routes>
@@ -40,7 +56,7 @@ export default function App() {
             </Routes>
           </Suspense>
         </MainLayout>
-      </div>
+      </motion.div>
     </>
   )
 }
