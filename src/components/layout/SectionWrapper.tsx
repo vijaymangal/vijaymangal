@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
-import { SectionPatterns, sectionPatternVariant } from '@/components/effects/SectionPatterns'
 import { cn } from '@/utils/cn'
+import { sectionBackgroundFromId } from '@/utils/sections'
 
 interface SectionWrapperProps {
   id: string
@@ -19,10 +19,13 @@ export function SectionWrapper({
     <section
       id={id}
       aria-labelledby={ariaLabelledBy}
-      className={cn('section-dark relative overflow-hidden py-24 md:py-32', className)}
+      className={cn(
+        'section-tone relative overflow-hidden py-20 md:py-24',
+        sectionBackgroundFromId(id),
+        className
+      )}
     >
-      <SectionPatterns variant={sectionPatternVariant(id)} />
-      <div className="relative z-[1]">{children}</div>
+      {children}
     </section>
   )
 }

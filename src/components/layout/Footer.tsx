@@ -3,7 +3,7 @@ import { socialLinks, contactInfo } from '@/data/social'
 import { SocialIcon } from '@/components/layout/SocialIcon'
 import { Container } from '@/components/layout/Container'
 import { Logo } from '@/components/layout/Logo'
-import { SectionPatterns } from '@/components/effects/SectionPatterns'
+import { sectionClasses } from '@/utils/sections'
 import { cn } from '@/utils/cn'
 
 interface FooterProps {
@@ -14,9 +14,14 @@ export function Footer({ className }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
-    <footer className={cn('section-dark relative overflow-hidden border-t border-[var(--color-border)]', className)}>
-      <SectionPatterns variant="default" />
-      <Container className="relative z-[1] py-8 md:py-10">
+    <footer
+      className={cn(
+        sectionClasses('footer'),
+        'relative overflow-hidden',
+        className
+      )}
+    >
+      <Container className="py-6 md:py-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <Logo size="sm" className="text-white" />

@@ -9,7 +9,7 @@ import { projects } from '@/data/projects'
 import { fadeUp, staggerContainer } from '@/utils/motion'
 import { cn } from '@/utils/cn'
 import { publicAsset } from '@/utils/assets'
-import { SectionPatterns } from '@/components/effects/SectionPatterns'
+import { sectionClasses } from '@/utils/sections'
 
 export default function AllProjects() {
   return (
@@ -20,9 +20,13 @@ export default function AllProjects() {
         path="/projects"
       />
 
-      <section className="section-dark relative overflow-hidden pb-24 pt-28 md:pb-32 md:pt-32">
-        <SectionPatterns variant="projects" />
-        <Container className="relative z-[1]">
+      <section
+        className={sectionClasses(
+          'projectsPage',
+          'relative overflow-hidden pb-20 pt-24 md:pb-24 md:pt-28'
+        )}
+      >
+        <Container>
           <Link
             to="/"
             className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-white"
