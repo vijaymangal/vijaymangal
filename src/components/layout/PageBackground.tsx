@@ -14,14 +14,14 @@ export function PageBackground() {
           reducedMotion
             ? undefined
             : {
-                opacity: [0.7, 1, 0.7],
+                opacity: [0.5, 0.8, 0.5],
               }
         }
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -right-40 top-1/3 h-[500px] w-[500px] rounded-full opacity-30 blur-[120px]"
-        style={{ background: 'rgba(232, 220, 200, 0.08)' }}
+        className="absolute -right-40 top-1/3 h-[500px] w-[500px] rounded-full opacity-20 blur-[120px]"
+        style={{ background: 'rgba(255, 237, 213, 0.35)' }}
         animate={
           reducedMotion
             ? undefined
@@ -33,8 +33,8 @@ export function PageBackground() {
         transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
       />
       <motion.div
-        className="absolute -left-32 bottom-1/4 h-[400px] w-[400px] rounded-full opacity-20 blur-[100px]"
-        style={{ background: 'rgba(201, 165, 92, 0.12)' }}
+        className="absolute -left-32 bottom-1/4 h-[400px] w-[400px] rounded-full opacity-15 blur-[100px]"
+        style={{ background: 'rgba(194, 65, 12, 0.12)' }}
         animate={
           reducedMotion
             ? undefined

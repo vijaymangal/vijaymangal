@@ -76,7 +76,7 @@ export function Projects() {
                     />
 
                     {hasLiveUrl && (
-                      <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-bg/80 px-3 py-1.5 text-xs font-medium text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                      <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-ink/85 px-3 py-1.5 text-xs font-medium text-[#fafafa] opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
                         View live site
                         <ArrowUpRight className="h-3.5 w-3.5" />
                       </span>
@@ -113,7 +113,7 @@ export function Projects() {
                   <ul className="mt-5 flex flex-wrap gap-2">
                     {project.tech.map((tech) => (
                       <li key={tech}>
-                        <span className="inline-flex items-center rounded-full bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-white/90">
+                        <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium text-white/90">
                           {tech}
                         </span>
                       </li>
@@ -150,7 +150,7 @@ export function Projects() {
         >
           <Link
             to="/projects"
-            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-base font-semibold text-white shadow-[0_0_24px_-4px_rgba(201,165,92,0.45)] transition-all duration-300 hover:bg-accent-soft"
+            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-accent px-5 py-2.5 text-base font-semibold text-white shadow-[0_0_24px_-4px_rgba(194, 65, 12,0.45)] transition-all duration-300 hover:bg-accent-soft"
           >
             View all projects
             <ArrowUpRight className="h-4 w-4" />

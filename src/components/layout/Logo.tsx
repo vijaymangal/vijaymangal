@@ -15,7 +15,7 @@ export function Logo({ className, size = 'sm' }: LogoProps) {
   return (
     <span
       className={cn(
-        'font-name inline-block text-white transition-colors duration-300',
+        'font-name inline-block text-ink transition-colors duration-300',
         sizes[size],
         className
       )}

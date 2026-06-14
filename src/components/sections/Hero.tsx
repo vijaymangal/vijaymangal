@@ -5,6 +5,7 @@ import { Container } from '@/components/layout/Container'
 import { SocialIcon } from '@/components/layout/SocialIcon'
 import { Magnetic } from '@/components/effects/Magnetic'
 import { ParallaxPhoto } from '@/components/effects/ParallaxPhoto'
+import { SectionPatterns } from '@/components/effects/SectionPatterns'
 import { AnimatedCounter } from '@/components/effects/AnimatedCounter'
 import { socialLinks, resumeUrl } from '@/data/social'
 import profilePhoto from '@/assets/profile-photo.JPG'
@@ -30,20 +31,20 @@ export function Hero() {
     <section
       id="hero"
       aria-label="Introduction"
-      className="relative min-h-screen overflow-hidden pt-20 md:pt-24"
+      className="section-dark relative min-h-screen overflow-hidden pt-20 md:pt-24"
     >
+      <SectionPatterns variant="hero" />
       <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_90%_70%_at_50%_-15%,rgba(201,165,92,0.16),transparent_65%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-section-about md:h-32" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_70%_20%,rgba(194,65,12,0.08),transparent_55%)]" />
       </div>
 
-      <Container className="relative z-10 flex min-h-[calc(100vh-5rem)] items-center py-16 md:py-20">
+      <Container className="relative z-[1] flex min-h-[calc(100vh-5rem)] items-center py-16 md:py-20">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 xl:gap-20">
           <motion.div variants={stagger} initial="hidden" animate="show">
             <motion.div variants={item} className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-soft opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-soft" />
               </span>
               <span className="text-xs font-medium text-accent-soft">Senior UI/UX Engineer</span>
             </motion.div>

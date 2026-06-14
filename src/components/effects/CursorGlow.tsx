@@ -37,7 +37,7 @@ export function CursorGlow() {
         x: springX,
         y: springY,
         background:
-          'radial-gradient(circle, rgba(201, 165, 92, 0.3) 0%, rgba(232, 220, 200, 0.08) 45%, transparent 70%)',
+          'radial-gradient(circle, rgba(194, 65, 12, 0.22) 0%, rgba(255, 237, 213, 0.12) 45%, transparent 70%)',
       }}
       aria-hidden="true"
     />

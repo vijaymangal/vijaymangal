@@ -1,23 +1,22 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { navigation } from '@/data/navigation'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { useScrollTo } from '@/hooks/useScrollTo'
-import { useScrolled } from '@/hooks/useScrolled'
 import { sectionIds } from '@/data/navigation'
 import { cn } from '@/utils/cn'
-import { Button } from '@/components/ui/Button'
-import { Container } from '@/components/layout/Container'
 import { Logo } from '@/components/layout/Logo'
+
+const navShell =
+  'rounded-full border border-white/10 bg-[rgba(17,17,17,0.88)] shadow-[0_8px_28px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
   const activeSection = useActiveSection(sectionIds)
   const scrollTo = useScrollTo()
-  const scrolled = useScrolled()
   const isHome = location.pathname === '/'
 
   const handleNavClick = (href: string) => {
@@ -27,15 +26,90 @@ export function Navbar() {
 
   const navLinks = navigation.filter((item) => item.id !== 'hero')
 
-  return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter] duration-300',
-        scrolled ? 'bg-bg/90 backdrop-blur-xl' : 'bg-transparent'
-      )}
+  const renderNavLink = (item: (typeof navigation)[number], mobile = false) => {
+    const baseClass = mobile
+      ? 'block rounded-lg px-3 py-2.5 text-sm font-medium transition-colors'
+      : 'relative z-10 block rounded-full px-3.5 py-2 text-sm font-medium transition-colors'
+
+    if (isHome) {
+      const isActive = activeSection === item.id
+
+      return (
+        <a
+          href={item.href}
+          onClick={(e) => {
+            e.preventDefault()
+            handleNavClick(item.href)
+          }}
+          className={cn(
+            baseClass,
+            mobile
+              ? isActive
+                ? 'text-accent-soft'
+                : 'text-muted'
+              : isActive
+                ? 'text-white'
+                : 'text-muted hover:text-white'
+          )}
+        >
+          {!mobile && isActive && (
+            <motion.span
+              layoutId="nav-indicator"
+              className="absolute inset-x-0 top-1/2 -z-10 h-[27px] -translate-y-1/2 rounded-full bg-accent"
+              transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 28,
+                mass: 0.85,
+              }}
+            />
+          )}
+          {item.label}
+        </a>
+      )
+    }
+
+    return (
+      <Link
+        to={item.href === '#hero' ? '/' : `/${item.href}`}
+        onClick={() => mobile && setIsOpen(false)}
+        className={cn(baseClass, 'text-muted hover:text-white')}
+      >
+        {item.label}
+      </Link>
+    )
+  }
+
+  const contactCta = isHome ? (
+    <a
+      href="#contact"
+      onClick={(e) => {
+        e.preventDefault()
+        handleNavClick('#contact')
+      }}
+      className="rounded-full bg-accent px-4 py-2 font-mono text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-accent-soft"
     >
-      <Container>
-        <nav aria-label="Main navigation" className="flex h-16 items-center justify-between md:h-[4.5rem]">
+      Let&apos;s talk
+    </a>
+  ) : (
+    <Link
+      to="/#contact"
+      className="rounded-full bg-accent px-4 py-2 font-mono text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-accent-soft"
+    >
+      Let&apos;s talk
+    </Link>
+  )
+
+  return (
+    <>
+      <header className="pointer-events-none fixed inset-x-0 top-0 z-50 hidden justify-center px-4 pt-5 md:flex">
+        <nav
+          aria-label="Main navigation"
+          className={cn(
+            'pointer-events-auto flex max-w-[calc(100vw-2rem)] items-center gap-3.5 py-px pl-[18px] pr-1.5',
+            navShell
+          )}
+        >
           <Link
             to="/"
             onClick={(e) => {
@@ -45,122 +119,68 @@ export function Navbar() {
               }
             }}
             aria-label="Vijay Mangal home"
-            className="hover:opacity-90"
+            className="shrink-0 border-r border-white/12 pr-3.5 hover:opacity-90"
           >
-            <Logo size="sm" />
+            <Logo size="sm" className="text-white" />
           </Link>
 
-          <ul className="hidden items-center gap-1 lg:flex">
+          <ul className="relative flex min-w-0 items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {navLinks.map((item) => (
-              <li key={item.id}>
-                {isHome ? (
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      handleNavClick(item.href)
-                    }}
-                    className={cn(
-                      'relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors',
-                      activeSection === item.id
-                        ? 'text-white'
-                        : 'text-muted hover:text-white'
-                    )}
-                  >
-                    {item.label}
-                    {activeSection === item.id && (
-                      <motion.span
-                        layoutId="nav-pill"
-                        className="absolute inset-0 -z-10 rounded-full bg-white/[0.06]"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                      />
-                    )}
-                  </a>
-                ) : (
-                  <Link
-                    to={`/${item.href}`}
-                    className="relative rounded-full px-3.5 py-2 text-sm font-medium text-muted transition-colors hover:text-white"
-                  >
-                    {item.label}
-                  </Link>
-                )}
+              <li key={item.id} className="shrink-0">
+                {renderNavLink(item)}
               </li>
             ))}
           </ul>
 
-          <div className="hidden lg:block">
-            {isHome ? (
-              <Button
-                href="#contact"
-                size="sm"
-                onClick={(e) => {
-                  e.preventDefault()
-                  handleNavClick('#contact')
-                }}
-              >
-                Let&apos;s talk
-                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-              </Button>
-            ) : (
-              <Button href="/#contact" size="sm">
-                Let&apos;s talk
-                <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
-              </Button>
-            )}
-          </div>
+          <div className="shrink-0">{contactCta}</div>
+        </nav>
+      </header>
+
+      <header className="fixed inset-x-0 top-0 z-50 md:hidden">
+        <div className="flex items-center justify-between px-4 py-3">
+          <Link
+            to="/"
+            onClick={(e) => {
+              if (isHome) {
+                e.preventDefault()
+                handleNavClick('#hero')
+              }
+            }}
+            aria-label="Vijay Mangal home"
+            className={cn('px-3.5 py-2 hover:opacity-90', navShell)}
+          >
+            <Logo size="sm" className="text-white" />
+          </Link>
 
           <button
             type="button"
-            className="rounded-lg p-2 text-muted hover:text-white lg:hidden"
+            className={cn('p-2.5 text-white/80', navShell)}
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-        </nav>
-      </Container>
+        </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="overflow-hidden border-t border-[var(--color-border)] bg-bg/95 backdrop-blur-xl lg:hidden"
-          >
-            <ul className="container-main flex flex-col gap-1 py-4">
-              {navigation.map((item) => (
-                <li key={item.id}>
-                  {isHome ? (
-                    <a
-                      href={item.href}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        handleNavClick(item.href)
-                      }}
-                      className={cn(
-                        'block rounded-lg px-3 py-2.5 text-sm font-medium',
-                        activeSection === item.id ? 'text-accent-soft' : 'text-muted'
-                      )}
-                    >
-                      {item.label}
-                    </a>
-                  ) : (
-                    <Link
-                      to={item.href === '#hero' ? '/' : `/${item.href}`}
-                      onClick={() => setIsOpen(false)}
-                      className="block rounded-lg px-3 py-2.5 text-sm font-medium text-muted"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="overflow-hidden border-t border-white/10 bg-[rgba(17,17,17,0.95)] backdrop-blur-xl"
+            >
+              <ul className="flex flex-col gap-1 px-4 py-4">
+                {navigation.map((item) => (
+                  <li key={item.id}>{renderNavLink(item, true)}</li>
+                ))}
+                <li className="pt-2">{contactCta}</li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
+    </>
   )
 }

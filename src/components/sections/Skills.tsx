@@ -42,7 +42,7 @@ export function Skills() {
                 className="grid gap-5 py-7 first:pt-0 last:pb-0 md:grid-cols-12 md:items-start md:gap-8 md:py-8"
               >
                 <div className="flex gap-3 md:col-span-4 lg:col-span-3">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] bg-bg/50 text-accent-soft">
+                  <span className="icon-chip flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] text-accent-soft">
                     <Icon className="h-4 w-4" strokeWidth={1.75} />
                   </span>
                   <div className="min-w-0">
@@ -63,7 +63,7 @@ export function Skills() {
                 <ul className="flex flex-wrap gap-2 md:col-span-8 md:content-start lg:col-span-9">
                   {category.skills.map((skill) => (
                     <li key={skill}>
-                      <span className="surface-interactive inline-flex items-center rounded-full px-3.5 py-1.5 text-sm font-medium text-white">
+                      <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium text-white">
                         {skill}
                       </span>
                     </li>

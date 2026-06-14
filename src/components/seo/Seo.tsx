@@ -46,7 +46,7 @@ export function Seo({
       <meta name="twitter:image" content={ogImage} />
       <meta name="twitter:image:alt" content={`${siteConfig.name}, ${siteConfig.jobTitle}`} />
 
-      <meta name="theme-color" content="#050506" />
+      <meta name="theme-color" content="#111111" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <link rel="manifest" href="/manifest.webmanifest" />
 

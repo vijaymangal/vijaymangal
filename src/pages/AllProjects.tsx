@@ -9,6 +9,7 @@ import { projects } from '@/data/projects'
 import { fadeUp, staggerContainer } from '@/utils/motion'
 import { cn } from '@/utils/cn'
 import { publicAsset } from '@/utils/assets'
+import { SectionPatterns } from '@/components/effects/SectionPatterns'
 
 export default function AllProjects() {
   return (
@@ -19,8 +20,9 @@ export default function AllProjects() {
         path="/projects"
       />
 
-      <section className="relative pb-24 pt-28 md:pb-32 md:pt-32">
-        <Container>
+      <section className="section-dark relative overflow-hidden pb-24 pt-28 md:pb-32 md:pt-32">
+        <SectionPatterns variant="projects" />
+        <Container className="relative z-[1]">
           <Link
             to="/"
             className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-white"
@@ -75,7 +77,7 @@ export default function AllProjects() {
                       </div>
 
                       {hasLiveUrl && (
-                        <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-bg/80 px-3 py-1.5 text-xs font-medium text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
+                        <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-ink/85 px-3 py-1.5 text-xs font-medium text-[#fafafa] opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
                           View live site
                           <ArrowUpRight className="h-3.5 w-3.5" />
                         </span>
@@ -129,7 +131,7 @@ export default function AllProjects() {
                     <ul className="mt-6 flex flex-wrap gap-2">
                       {project.tech.map((tech) => (
                         <li key={tech}>
-                          <span className="inline-flex items-center rounded-full bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-white/90">
+                          <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium text-white/90">
                             {tech}
                           </span>
                         </li>

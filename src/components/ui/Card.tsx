@@ -7,7 +7,7 @@ interface CardProps {
   interactive?: boolean
 }
 
-export function Card({ children, className, interactive = true }: CardProps) {
+export function Card({ children, className, interactive = false }: CardProps) {
   return (
     <div
       className={cn(

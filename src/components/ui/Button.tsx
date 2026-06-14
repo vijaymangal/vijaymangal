@@ -5,10 +5,10 @@ type Variant = 'primary' | 'outline' | 'ghost'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-accent text-white hover:bg-accent-soft shadow-[0_0_24px_-4px_rgba(201,165,92,0.45)]',
+    'bg-accent text-white hover:bg-accent-soft shadow-[0_0_24px_-4px_rgba(194, 65, 12,0.45)]',
   outline:
-    'border border-[var(--color-border)] bg-white/[0.02] text-white hover:border-accent/40 hover:bg-accent/5',
-  ghost: 'text-muted hover:text-white',
+    'border border-[var(--color-border)] bg-white/[0.02] text-inherit hover:border-accent/40 hover:bg-accent/5',
+  ghost: 'text-muted hover:text-inherit',
 }
 
 interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {

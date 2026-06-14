@@ -20,7 +20,7 @@ export function Preloader({ isLoading }: PreloaderProps) {
         >
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(201,165,92,0.08),transparent_60%)]"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(194, 65, 12,0.1),transparent_60%)]"
           />
 
           <motion.div

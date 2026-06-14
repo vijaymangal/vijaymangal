@@ -4,26 +4,30 @@ export function useActiveSection(sectionIds: string[]): string {
   const [active, setActive] = useState(sectionIds[0] ?? '')
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = []
+    const updateActiveSection = () => {
+      const marker = window.scrollY + window.innerHeight * 0.32
+      let current = sectionIds[0] ?? ''
 
-    sectionIds.forEach((id) => {
-      const element = document.getElementById(id)
-      if (!element) return
+      for (const id of sectionIds) {
+        const element = document.getElementById(id)
+        if (!element) continue
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActive(id)
-          }
-        },
-        { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
-      )
+        if (element.offsetTop <= marker) {
+          current = id
+        }
+      }
 
-      observer.observe(element)
-      observers.push(observer)
-    })
+      setActive(current)
+    }
 
-    return () => observers.forEach((observer) => observer.disconnect())
+    updateActiveSection()
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('resize', updateActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('resize', updateActiveSection)
+    }
   }, [sectionIds])
 
   return active

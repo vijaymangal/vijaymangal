@@ -45,16 +45,16 @@ export function Contact() {
           <motion.div variants={fadeUp} className="surface relative w-full overflow-hidden rounded-3xl">
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(201,165,92,0.08),transparent_55%)]"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(194, 65, 12,0.08),transparent_55%)]"
             />
 
             <div className="relative p-6 md:p-8 lg:p-10">
-              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5">
+              <div className="inline-flex w-fit items-center gap-2 rounded-full border border-accent/25 bg-accent/10 px-3 py-1.5">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-soft opacity-60" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-soft" />
                 </span>
-                <span className="text-xs font-medium text-emerald-300">Open to new roles</span>
+                <span className="text-xs font-medium text-accent-soft">Open to new roles</span>
               </div>
 
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -69,7 +69,7 @@ export function Contact() {
                       rel={channel.external ? 'noopener noreferrer' : undefined}
                       className="surface-interactive group flex h-full items-center gap-4 rounded-2xl p-4"
                     >
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] bg-bg/50 text-accent-soft">
+                      <span className="icon-chip flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] text-accent-soft">
                         <Icon className="h-4 w-4" strokeWidth={1.75} />
                       </span>
                       <span className="min-w-0 flex-1">

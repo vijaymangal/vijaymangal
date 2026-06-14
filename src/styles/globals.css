@@ -10,23 +10,17 @@
 }
 
 @theme {
-  --color-bg: #050506;
-  --color-surface: #0c0c0e;
-  --color-elevated: #131316;
-  --color-card: #18181c;
-  /* Subtle section tints — same dark base, gentle warm/cool shifts only */
-  --color-section-hero: #050506;
-  --color-section-about: #070706;
-  --color-section-skills: #060607;
-  --color-section-projects: #080807;
-  --color-section-services: #060608;
-  --color-section-testimonials: #080808;
-  --color-section-contact: #070709;
-  --color-accent: #c9a55c;
-  --color-accent-soft: #dbb978;
-  --color-cyan: #e8dcc8;
-  --color-muted: #71717a;
-  --color-border: rgba(255, 255, 255, 0.07);
+  --color-bg: #111111;
+  --color-surface: #161616;
+  --color-elevated: #1a1a1a;
+  --color-card: #1f1f1f;
+  --color-cream: #f0efeb;
+  --color-accent: #c2410c;
+  --color-accent-soft: #ea580c;
+  --color-cyan: #ffedd5;
+  --color-muted: #888888;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-ink: #111111;
   --font-sans: 'Ysabeau', system-ui, sans-serif;
   --font-heading: 'Ysabeau Infant', system-ui, sans-serif;
   --font-name: 'Authentic Photograph', cursive;
@@ -86,24 +80,103 @@ body {
 }
 
 ::selection {
-  background-color: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  background-color: color-mix(in srgb, var(--color-accent-soft) 35%, transparent);
   color: #fff;
 }
 
-/* Subtle dot grid */
-/* Subtle dot grid */
 .bg-grid {
-  background-image: radial-gradient(rgba(201, 165, 92, 0.09) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(194, 65, 12, 0.1) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-/* Accent glow — single layer, restrained */
 .glow-accent {
   background: radial-gradient(
     600px circle at var(--glow-x, 50%) var(--glow-y, 0%),
-    rgba(201, 165, 92, 0.12),
+    rgba(194, 65, 12, 0.1),
     transparent 60%
   );
+}
+
+.section-dark {
+  background-color: #111111;
+  background-image:
+    radial-gradient(ellipse 85% 55% at 50% -15%, rgba(194, 65, 12, 0.14), transparent 58%),
+    radial-gradient(ellipse 55% 40% at 100% 100%, rgba(194, 65, 12, 0.07), transparent 52%),
+    linear-gradient(180deg, #151311 0%, #111111 42%, #111111 78%, #131110 100%);
+  color: #fafafa;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-muted: #888888;
+  --color-elevated: #1a1a1a;
+  --color-card: #1f1f1f;
+}
+
+.section-light {
+  background-color: #f0efeb;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% 0%, rgba(194, 65, 12, 0.08), transparent 62%),
+    radial-gradient(ellipse 50% 35% at 0% 100%, rgba(255, 237, 213, 0.45), transparent 55%),
+    linear-gradient(180deg, #f5f3ef 0%, #f0efeb 48%, #ebe8e3 100%);
+  color: #111111;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-muted: #555555;
+  --color-elevated: #ffffff;
+  --color-card: #fafaf9;
+}
+
+.section-light .text-white {
+  color: #111111;
+}
+
+.section-light .bg-accent.text-white,
+.section-light .bg-accent .text-white {
+  color: #ffffff;
+}
+
+.section-light [class*='text-white/90'] {
+  color: rgb(17 17 17 / 0.9);
+}
+
+.section-light [class*='bg-ink/8'] [class*='text-white'],
+.section-light [class*='bg-ink/9'] [class*='text-white'],
+.section-light [class*='bg-ink/85'],
+.section-light [class*='bg-ink/90'] {
+  color: #fafafa;
+}
+
+.section-light .text-muted {
+  color: #555555;
+}
+
+.section-light .text-gradient {
+  background: linear-gradient(135deg, #111111 0%, #ea580c 55%, #c2410c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-light .surface,
+.section-light .surface-interactive {
+  background-color: #ffffff;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.section-light a.surface-interactive:hover,
+.section-light button.surface-interactive:hover {
+  border-color: rgba(194, 65, 12, 0.4);
+  background-color: #f8f8f6;
+}
+
+.section-light .icon-chip {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.section-dark .icon-chip {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.section-light ::selection {
+  background-color: color-mix(in srgb, var(--color-accent-soft) 22%, transparent);
+  color: #111111;
 }
 
 .surface {
@@ -117,9 +190,10 @@ body {
   transition: border-color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
 }
 
-.surface-interactive:hover {
-  border-color: rgba(201, 165, 92, 0.35);
-  background-color: #1c1c21;
+a.surface-interactive:hover,
+button.surface-interactive:hover {
+  border-color: rgba(194, 65, 12, 0.4);
+  background-color: color-mix(in srgb, var(--color-card) 88%, white);
 }
 
 h1,
@@ -150,7 +224,7 @@ h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #fff 0%, #dbb978 50%, #e8dcc8 100%);
+  background: linear-gradient(135deg, #fff 0%, #ea580c 50%, #ffedd5 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

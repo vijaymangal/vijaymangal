@@ -56,7 +56,7 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
-              className="surface-interactive rounded-2xl p-6"
+              className="surface rounded-2xl p-6"
             >
               <item.icon className="h-5 w-5 text-accent-soft" strokeWidth={1.5} />
               <h3 className="mt-4 font-semibold text-white">{item.title}</h3>
@@ -119,11 +119,11 @@ export function About() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.4, delay: index * 0.06 }}
-                className="group flex gap-5 border-b border-[var(--color-border)] py-5 first:pt-0 last:border-0"
+                className="flex gap-5 border-b border-[var(--color-border)] py-5 first:pt-0 last:border-0"
               >
                 <span className="w-12 shrink-0 font-mono text-sm text-accent">{item.year}</span>
                 <div>
-                  <h3 className="font-semibold text-white transition-colors group-hover:text-accent-soft">
+                  <h3 className="font-semibold text-white">
                     {item.title}
                   </h3>
                   <p className="mt-1 text-base text-muted">{item.description}</p>
@@ -165,7 +165,7 @@ export function About() {
                   className="grid gap-5 py-7 first:pt-0 last:pb-0 md:grid-cols-12 md:items-start md:gap-8 md:py-8"
                 >
                   <div className="flex gap-3 md:col-span-4 lg:col-span-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] bg-bg/50 text-accent-soft">
+                    <span className="icon-chip flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[var(--color-border)] text-accent-soft">
                       <Icon className="h-4 w-4" strokeWidth={1.75} />
                     </span>
                     <div className="min-w-0">
@@ -173,7 +173,7 @@ export function About() {
                         <h4 className="text-sm font-semibold text-white md:text-base">
                           {group.title}
                         </h4>
-                        <span className="shrink-0 font-mono text-xs text-accent/40">
+                        <span className="shrink-0 font-mono text-xs text-muted">
                           {String(index + 1).padStart(2, '0')}
                         </span>
                       </div>
@@ -187,7 +187,7 @@ export function About() {
                   <ul className="flex flex-wrap gap-2 md:col-span-8 md:content-start lg:col-span-9">
                     {group.certifications.map((cert) => (
                       <li key={cert}>
-                        <span className="inline-flex items-center rounded-full bg-white/[0.04] px-3.5 py-1.5 text-sm font-medium text-white/90">
+                        <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium leading-snug text-white/90">
                           {cert}
                         </span>
                       </li>
