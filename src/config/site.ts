@@ -32,8 +32,8 @@ export const siteConfig = {
   ],
   sameAs: [contactInfo.linkedin, contactInfo.github, contactInfo.instagram],
   ogImagePath: '/og-image.jpg',
-  ogImageWidth: 640,
-  ogImageHeight: 640,
+  ogImageWidth: 1254,
+  ogImageHeight: 1254,
 } as const
 
 export const sitemapRoutes = [
