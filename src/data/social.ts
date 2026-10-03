@@ -71,4 +71,4 @@ export const contactInfo = {
   instagram: 'https://instagram.com/vijay.mangal',
 }
 
-export const resumeUrl = '/VijayKumarMangal-Resume.pdf'
+export const resumeUrl = `${import.meta.env.BASE_URL}VijayKumarMangal-Resume.pdf`

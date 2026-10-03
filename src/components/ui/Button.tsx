@@ -5,9 +5,9 @@ type Variant = 'primary' | 'outline' | 'ghost'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-accent text-white hover:bg-accent-soft shadow-[0_0_24px_-4px_rgba(194, 65, 12,0.45)]',
+    'bg-accent text-white hover:bg-accent-hover',
   outline:
-    'border border-[var(--color-border)] bg-white/[0.02] text-inherit hover:border-accent/40 hover:bg-accent/5',
+    'border border-[var(--color-border)] bg-foreground/[0.02] text-inherit hover:border-accent/40 hover:bg-accent/5',
   ghost: 'text-muted hover:text-inherit',
 }
 
@@ -27,7 +27,7 @@ export function Button({
   return (
     <a
       className={cn(
-        'inline-flex items-center justify-center rounded-full font-semibold transition-all duration-300',
+        'inline-flex min-h-11 items-center justify-center rounded-full font-semibold transition-all duration-300',
         size === 'sm' ? 'px-4 py-2 text-sm' : 'px-5 py-2.5 text-base',
         variants[variant],
         className

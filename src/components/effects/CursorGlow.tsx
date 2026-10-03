@@ -1,23 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
+import { useMediaQuery } from '@/hooks/useMediaQuery'
 
 export function CursorGlow() {
   const reducedMotion = useReducedMotion()
-  const [enabled, setEnabled] = useState(false)
+  const hasPointer = useMediaQuery('(pointer: fine) and (min-width: 1024px)')
+  const enabled = hasPointer && !reducedMotion
   const x = useMotionValue(-200)
   const y = useMotionValue(-200)
   const springX = useSpring(x, { stiffness: 150, damping: 25 })
   const springY = useSpring(y, { stiffness: 150, damping: 25 })
 
   useEffect(() => {
-    if (reducedMotion) return
-
-    const hasFinePointer = window.matchMedia('(pointer: fine)').matches
-    const isWide = window.matchMedia('(min-width: 1024px)').matches
-    if (!hasFinePointer || !isWide) return
-
-    setEnabled(true)
+    if (!enabled) return
 
     const onMove = (event: MouseEvent) => {
       x.set(event.clientX)
@@ -26,7 +22,7 @@ export function CursorGlow() {
 
     window.addEventListener('mousemove', onMove, { passive: true })
     return () => window.removeEventListener('mousemove', onMove)
-  }, [reducedMotion, x, y])
+  }, [enabled, x, y])
 
   if (!enabled) return null
 

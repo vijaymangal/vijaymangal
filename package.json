@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "test:portfolio": "node scripts/audit-portfolio.mjs",
+    "test:theme": "node scripts/audit-theme.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

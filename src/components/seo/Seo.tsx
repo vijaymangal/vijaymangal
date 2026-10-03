@@ -1,18 +1,22 @@
 import { Helmet } from 'react-helmet-async'
 import { absoluteUrl, siteAsset, siteConfig } from '@/config/site'
 import { getStructuredDataGraph } from '@/utils/structuredData'
+import { useTheme } from '@/hooks/useTheme'
 
 interface SeoProps {
   title?: string
   description?: string
   path?: string
+  noIndex?: boolean
 }
 
 export function Seo({
   title = siteConfig.title,
   description = siteConfig.description,
   path = '/',
+  noIndex = false,
 }: SeoProps) {
+  const { theme } = useTheme()
   const canonicalUrl = absoluteUrl(path)
   const socialDescription =
     description === siteConfig.description ? siteConfig.shortDescription : description
@@ -28,10 +32,10 @@ export function Seo({
       <meta name="description" content={description} />
       <meta name="keywords" content={siteConfig.keywords.join(', ')} />
       <meta name="author" content={siteConfig.name} />
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-      <meta name="googlebot" content="index, follow, max-image-preview:large" />
+      <meta name="robots" content={noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+      <meta name="googlebot" content={noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
       <meta name="format-detection" content="telephone=no" />
-      <link rel="canonical" href={canonicalUrl} />
+      {!noIndex && <link rel="canonical" href={canonicalUrl} />}
       <link rel="sitemap" type="application/xml" title="Sitemap" href={sitemapUrl} />
 
       <meta property="og:type" content="website" />
@@ -53,11 +57,11 @@ export function Seo({
       <meta name="twitter:image" content={ogImage} />
       <meta name="twitter:image:alt" content={`${siteConfig.name}, ${siteConfig.jobTitle}`} />
 
-      <meta name="theme-color" content="#111111" />
+      <meta name="theme-color" content={theme === 'light' ? '#f5f3ef' : '#111111'} />
       <link rel="icon" type="image/svg+xml" href={siteAsset('/favicon.svg')} />
       <link rel="manifest" href={siteAsset('/manifest.webmanifest')} />
 
-      <script type="application/ld+json">{structuredData}</script>
+      {!noIndex && <script type="application/ld+json">{structuredData}</script>}
     </Helmet>
   )
 }

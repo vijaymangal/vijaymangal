@@ -18,13 +18,21 @@ npm run build
 npm run preview
 ```
 
+## Validation
+
+Run `npm run lint` and `npm run build`. With the dev server running, run `npm run test:portfolio` for browser checks at 320, 390, 768, and 1440 pixels. The checks cover page headings, image loading, overflow, route metadata, project links, mobile menu controls, keyboard focus, reduced-motion scrolling, and the résumé PDF. Screenshots are saved in the ignored `artifacts/` directory.
+
+The browser check uses Playwright Chromium when installed, or local Google Chrome. Set `PORTFOLIO_URL` to test a different local preview URL.
+
+Run `npm run test:theme` with the dev server running to check light/dark switching, saved choices, system preferences, route consistency, and operation when browser storage is unavailable. Theme colors are defined in `src/styles/globals.css`. The navigation toggle saves an explicit choice under `portfolio-theme`; without a saved choice the site follows the system theme.
+
 ## Replace Your Assets
 
-1. **Logo** — Replace `src/assets/logo.svg` with your PNG logo (`logo.png`), then update imports in `Navbar.tsx` and `Footer.tsx`
-2. **Profile Photo** — Add `src/assets/profile-photo.png` and update the import in `Hero.tsx`
-3. **Resume** — Add your resume as `public/resume.pdf`
-4. **Photography** — Replace URLs in `src/data/photography.ts` with your own images
-5. **Social Links** — Update URLs in `src/data/social.ts`
+1. **Brand** — Update the signature text in `src/components/layout/Logo.tsx`.
+2. **Profile photo** — Replace `src/assets/profile-photo.JPG`; the build also uses it for the social sharing image.
+3. **Résumé** — Replace `public/VijayKumarMangal-Resume.pdf`.
+4. **Projects** — Update `src/data/projects.ts` and the screenshots in `public/projects/`. Featured project IDs are configured in `src/components/sections/Projects.tsx`.
+5. **Social links** — Update URLs in `src/data/social.ts`.
 
 ## Project Structure
 

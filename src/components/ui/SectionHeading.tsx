@@ -10,6 +10,7 @@ interface SectionHeadingProps {
   align?: 'left' | 'center'
   className?: string
   action?: ReactNode
+  as?: 'h1' | 'h2'
 }
 
 export function SectionHeading({
@@ -20,6 +21,7 @@ export function SectionHeading({
   align = 'left',
   className,
   action,
+  as: Heading = 'h2',
 }: SectionHeadingProps) {
   return (
     <motion.header
@@ -44,14 +46,14 @@ export function SectionHeading({
           <div className={cn('section-label', align === 'center' && 'justify-center')}>
             {label}
           </div>
-          <h2
+          <Heading
             id={headingId}
-            className="text-display mt-4 text-3xl text-white md:text-4xl lg:text-5xl"
+            className="text-display mt-4 text-3xl text-foreground md:text-4xl lg:text-5xl"
           >
             {title}
-          </h2>
+          </Heading>
           {description && (
-            <p className="mt-4 text-lg text-muted md:text-xl">{description}</p>
+            <p className="mt-4 max-w-2xl text-lg text-muted md:text-xl">{description}</p>
           )}
         </div>
 

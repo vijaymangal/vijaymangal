@@ -12,7 +12,7 @@ export function useActiveSection(sectionIds: string[]): string {
         const element = document.getElementById(id)
         if (!element) continue
 
-        if (element.offsetTop <= marker) {
+        if (element.getBoundingClientRect().top + window.scrollY <= marker) {
           current = id
         }
       }

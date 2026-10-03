@@ -24,14 +24,14 @@ export function Footer({ className }: FooterProps) {
       <Container className="py-6 md:py-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <Logo size="sm" className="text-white" />
-            <p className="text-display mt-3 text-xl text-white md:text-2xl">
+            <Logo size="sm" className="text-foreground" />
+            <p className="text-display mt-3 text-xl text-foreground md:text-2xl">
               Based in Jaipur.
               <span className="text-gradient"> Say hello.</span>
             </p>
             <a
               href={`mailto:${contactInfo.email}`}
-              className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-accent-soft hover:text-white"
+              className="mt-2 inline-flex items-center gap-1 text-sm font-medium text-accent-soft hover:text-foreground"
             >
               {contactInfo.email}
               <ArrowUpRight className="h-3.5 w-3.5" />
@@ -45,7 +45,7 @@ export function Footer({ className }: FooterProps) {
                   key={link.id}
                   link={link}
                   size="sm"
-                  className="surface-interactive flex h-9 w-9 items-center justify-center rounded-full hover:text-accent-soft"
+                  className="surface-interactive flex h-11 w-11 items-center justify-center rounded-full hover:text-accent-soft"
                 />
               ))}
             </div>

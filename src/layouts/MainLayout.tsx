@@ -19,12 +19,12 @@ export function MainLayout({ children }: MainLayoutProps) {
       <CursorGlow />
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-white"
       >
         Skip to main content
       </a>
       <Navbar />
-      <main id="main-content" className="relative z-10">
+      <main id="main-content" tabIndex={-1} className="relative z-10">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-x-0 top-0 min-h-full bg-grid opacity-70"

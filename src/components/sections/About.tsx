@@ -44,7 +44,7 @@ export function About() {
           label="About"
           headingId="about-heading"
           title="About me"
-          description="14 years in frontend and UI/UX, currently at Deloitte in Jaipur."
+          description="14+ years connecting design and frontend engineering, currently at Deloitte in Jaipur."
         />
 
         <div className="grid gap-4 md:grid-cols-3">
@@ -58,7 +58,7 @@ export function About() {
               className="surface rounded-2xl p-6"
             >
               <item.icon className="h-5 w-5 text-accent-soft" strokeWidth={1.5} />
-              <h3 className="mt-4 font-semibold text-white">{item.title}</h3>
+              <h3 className="mt-4 font-semibold text-foreground">{item.title}</h3>
               <p className="mt-2 text-base leading-relaxed text-muted">{item.text}</p>
             </motion.div>
           ))}
@@ -73,7 +73,7 @@ export function About() {
             className="space-y-4 text-muted"
           >
             <p>
-              I&apos;m a <span className="font-medium text-white">Senior UI/UX Engineer</span> at
+              I&apos;m a <span className="font-medium text-foreground">Senior UI/UX Engineer</span> at
               Deloitte, with a strong background in HTML5, CSS3, JavaScript, ReactJS,
               SFDC Lightning Web Components, and design tools including Figma and Adobe.
             </p>
@@ -82,7 +82,7 @@ export function About() {
               fixes before release, with an eye on usability and consistent UI across screens.
             </p>
             <p>
-              I hold a <span className="font-medium text-white">B.Sc. in Biotechnology</span> from
+              I hold a <span className="font-medium text-foreground">B.Sc. in Biotechnology</span> from
               the University of Rajasthan. Certifications in UX, Scrum, and Salesforce are listed
               below.
             </p>
@@ -120,9 +120,9 @@ export function About() {
                 transition={{ duration: 0.4, delay: index * 0.06 }}
                 className="flex gap-5 border-b border-[var(--color-border)] py-5 first:pt-0 last:border-0"
               >
-                <span className="w-12 shrink-0 font-mono text-sm text-accent">{item.year}</span>
+                <span className="w-12 shrink-0 font-mono text-sm text-accent-soft">{item.year}</span>
                 <div>
-                  <h3 className="font-semibold text-white">
+                  <h3 className="font-semibold text-foreground">
                     {item.title}
                   </h3>
                   <p className="mt-1 text-base text-muted">{item.description}</p>
@@ -168,7 +168,7 @@ export function About() {
                       <Icon className="h-4 w-4" strokeWidth={1.75} />
                     </span>
                     <div className="min-w-0">
-                      <h4 className="text-sm font-semibold text-white md:text-base">
+                      <h4 className="text-sm font-semibold text-foreground md:text-base">
                           {group.title}
                         </h4>
                       <p className="mt-1 text-sm text-muted">
@@ -181,7 +181,7 @@ export function About() {
                   <ul className="flex flex-wrap gap-2 md:col-span-8 md:content-start lg:col-span-9">
                     {group.certifications.map((cert) => (
                       <li key={cert}>
-                        <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium leading-snug text-white/90">
+                        <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-foreground/[0.06] px-3.5 py-1.5 text-sm font-medium leading-snug text-foreground/90">
                           {cert}
                         </span>
                       </li>

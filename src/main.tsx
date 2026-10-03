@@ -8,6 +8,10 @@ import '@/styles/globals.css'
 
 loadBrandFont()
 
+// React 19 hoists route metadata without replacing static HTML tags.
+// Hand the fallback metadata to Helmet before rendering to avoid duplicates.
+document.head.querySelectorAll('[data-rh="true"]').forEach(tag => tag.remove())
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <HelmetProvider>

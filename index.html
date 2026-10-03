@@ -2,20 +2,44 @@
 <html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('portfolio-theme'); } catch {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#111111" />
-    <meta name="author" content="Vijay Mangal" />
+    <meta data-rh="true" name="theme-color" content="#111111" />
+    <meta data-rh="true" name="author" content="Vijay Mangal" />
+    <meta name="google-site-verification" content="g6Bu1Fgry2BmGTrCBAm-y_4ELhNNm3b1tCrV0ziXT6w" />
     <meta
+      data-rh="true"
       name="description"
       content="Senior UI/UX Engineer at Deloitte with 14+ years of experience in frontend development, UI/UX design, and responsive web applications. Based in Jaipur, India."
     />
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://vijaymangal.vercel.app/" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <title>Vijay Mangal | Senior UI/UX Engineer</title>
+    <meta data-rh="true" name="robots" content="index, follow, max-image-preview:large" />
+    <link data-rh="true" rel="canonical" href="https://vijaymangal.vercel.app/" />
+    <link data-rh="true" rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link data-rh="true" rel="manifest" href="/manifest.webmanifest" />
+    <meta data-rh="true" property="og:type" content="website" />
+    <meta data-rh="true" property="og:site_name" content="Vijay Mangal" />
+    <meta data-rh="true" property="og:title" content="Vijay Mangal | Senior UI/UX Engineer" />
+    <meta data-rh="true" property="og:description" content="Senior UI/UX Engineer at Deloitte. 14+ years in frontend development and UI/UX design." />
+    <meta data-rh="true" property="og:url" content="https://vijaymangal.vercel.app/" />
+    <meta data-rh="true" property="og:image" content="https://vijaymangal.vercel.app/og-image.jpg" />
+    <meta data-rh="true" property="og:image:alt" content="Vijay Mangal, Senior UI/UX Engineer" />
+    <meta data-rh="true" name="twitter:card" content="summary_large_image" />
+    <meta data-rh="true" name="twitter:title" content="Vijay Mangal | Senior UI/UX Engineer" />
+    <meta data-rh="true" name="twitter:description" content="Senior UI/UX Engineer at Deloitte. 14+ years in frontend development and UI/UX design." />
+    <meta data-rh="true" name="twitter:image" content="https://vijaymangal.vercel.app/og-image.jpg" />
+    <title data-rh="true">Vijay Mangal | Senior UI/UX Engineer</title>
   </head>
   <body>
     <div id="root"></div>

@@ -21,7 +21,7 @@ export function Skills() {
           label="Skills"
           headingId="skills-heading"
           title="Tools I work with"
-          description="React, LWC, Figma, and the stack I use most weeks at work."
+          description="From interface design to production components: the tools behind my work."
         />
 
         <motion.div
@@ -45,7 +45,7 @@ export function Skills() {
                     <Icon className="h-4 w-4" strokeWidth={1.75} />
                   </span>
                   <div className="min-w-0">
-                      <h3 className="text-sm font-semibold text-white md:text-base">
+                      <h3 className="text-sm font-semibold text-foreground md:text-base">
                         {category.title}
                       </h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-muted md:text-base">
@@ -57,7 +57,7 @@ export function Skills() {
                 <ul className="flex flex-wrap gap-2 md:col-span-8 md:content-start lg:col-span-9">
                   {category.skills.map((skill) => (
                     <li key={skill}>
-                      <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium text-white">
+                      <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-foreground/[0.06] px-3.5 py-1.5 text-sm font-medium text-foreground">
                         {skill}
                       </span>
                     </li>

@@ -1,163 +1,34 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowUpRight, Check } from 'lucide-react'
+import { ArrowLeft, ArrowRight } from 'lucide-react'
 import { Container } from '@/components/layout/Container'
 import { SectionHeading } from '@/components/ui/SectionHeading'
-import { Button } from '@/components/ui/Button'
+import { ProjectArticle } from '@/components/ui/ProjectArticle'
 import { Seo } from '@/components/seo/Seo'
 import { projects } from '@/data/projects'
-import { fadeUp, staggerContainer } from '@/utils/motion'
-import { cn } from '@/utils/cn'
-import { publicAsset } from '@/utils/assets'
+import { staggerContainer } from '@/utils/motion'
 import { sectionClasses } from '@/utils/sections'
 
 export default function AllProjects() {
   return (
     <>
-      <Seo
-        title="Side Projects | Vijay Mangal"
-        description="Explore UI builds and frontend experiments by Vijay Mangal, including SkyRoute, Summit Supply, Elevate Digital, and InsightFlow AI with live demos."
-        path="/projects"
-      />
-
-      <section
-        className={sectionClasses(
-          'projectsPage',
-          'relative overflow-hidden pb-20 pt-24 md:pb-24 md:pt-28'
-        )}
-      >
+      <Seo title="Projects | Vijay Mangal" description="Personal UI builds and frontend experiments by Vijay Mangal. Explore travel, commerce, SaaS, and agency concepts with live demos." path="/projects" />
+      <section aria-labelledby="all-projects-heading" className={sectionClasses('projectsPage', 'relative overflow-hidden pb-20 pt-28 md:pb-24 md:pt-32')}>
         <Container>
-          <Link
-            to="/"
-            className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-white"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Back to home
+          <Link to="/" className="mb-8 inline-flex min-h-11 items-center gap-2 text-sm font-medium text-muted hover:text-foreground">
+            <ArrowLeft className="h-4 w-4" aria-hidden /> Back to home
           </Link>
-
-          <SectionHeading
-            label="Work"
-            headingId="all-projects-heading"
-            title="Side projects"
-            description="Notes on each build: what I tried, what shipped, and links to the live demos."
-          />
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-            className="divide-y divide-[var(--color-border)]"
-          >
-            {projects.map((project, index) => {
-              const reversed = index % 2 === 1
-              const hasLiveUrl = project.liveUrl !== '#'
-
-              return (
-                <motion.article
-                  key={project.id}
-                  id={project.id}
-                  variants={fadeUp}
-                  className="grid gap-8 py-12 first:pt-0 last:pb-0 md:grid-cols-12 md:items-start md:gap-10 md:py-16"
-                >
-                  <div className={cn('md:col-span-7', reversed && 'md:order-2')}>
-                    <a
-                      href={hasLiveUrl ? project.liveUrl : undefined}
-                      target={hasLiveUrl ? '_blank' : undefined}
-                      rel={hasLiveUrl ? 'noopener noreferrer' : undefined}
-                      className={cn(
-                        'surface group relative block overflow-hidden rounded-2xl',
-                        !hasLiveUrl && 'pointer-events-none'
-                      )}
-                      aria-label={hasLiveUrl ? `View ${project.title} live demo` : undefined}
-                    >
-                      <div className="aspect-[16/10] overflow-hidden bg-[#0b1120]">
-                        <img
-                          src={publicAsset(project.image)}
-                          alt={`${project.title} website preview`}
-                          className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                          loading="lazy"
-                        />
-                      </div>
-
-                      {hasLiveUrl && (
-                        <span className="pointer-events-none absolute bottom-4 right-4 inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-ink/85 px-3 py-1.5 text-xs font-medium text-[#fafafa] opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:opacity-100">
-                          View live site
-                          <ArrowUpRight className="h-3.5 w-3.5" />
-                        </span>
-                      )}
-                    </a>
-                  </div>
-
-                  <div className={cn('md:col-span-5', reversed && 'md:order-1')}>
-                    {hasLiveUrl && (
-                      <div className="flex justify-end">
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-sm font-medium text-muted transition-colors hover:text-accent-soft"
-                        >
-                          Live demo
-                          <ArrowUpRight className="h-3.5 w-3.5" />
-                        </a>
-                      </div>
-                    )}
-
-                    <h2 className={cn('text-display text-2xl text-white md:text-3xl', hasLiveUrl ? 'mt-4' : 'mt-0')}>
-                      {project.title}
-                    </h2>
-
-                    <p className="mt-4 text-base leading-relaxed text-muted md:text-lg">
-                      {project.overview}
-                    </p>
-
-                    <div className="mt-6">
-                      <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-accent-soft">
-                        Highlights
-                      </h3>
-                      <ul className="mt-3 space-y-2.5">
-                        {project.highlights.map((highlight) => (
-                          <li
-                            key={highlight}
-                            className="flex items-start gap-2.5 text-sm leading-relaxed text-muted md:text-base"
-                          >
-                            <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" aria-hidden />
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <ul className="mt-6 flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <li key={tech}>
-                          <span className="inline-flex items-center rounded-full border border-[var(--color-border)] bg-white/[0.06] px-3.5 py-1.5 text-sm font-medium text-white/90">
-                            {tech}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    {hasLiveUrl && (
-                      <div className="mt-8">
-                        <Button
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant="outline"
-                          size="sm"
-                          className="gap-1.5"
-                        >
-                          View live project
-                          <ArrowUpRight className="h-3.5 w-3.5" />
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </motion.article>
-              )
-            })}
+          <SectionHeading as="h1" label="Project collection" headingId="all-projects-heading" title="Personal projects" description="Independent UI concepts and frontend builds. Each explores a different product experience using sample content and data." />
+          <nav aria-label="Jump to a project" className="mb-12 flex flex-wrap gap-2">
+            {projects.map(project => <a key={project.id} href={`#${project.id}`} className="inline-flex min-h-11 items-center rounded-full border border-border px-4 py-2 text-sm text-muted hover:border-accent-soft hover:text-foreground">{project.title}</a>)}
+          </nav>
+          <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="divide-y divide-border">
+            {projects.map((project, index) => <ProjectArticle key={project.id} project={project} index={index} detailed />)}
           </motion.div>
+          <div className="mt-16 border-t border-border pt-10">
+            <h2 className="text-display text-2xl">Have a project or role in mind?</h2>
+            <Link to="/#contact" className="mt-4 inline-flex min-h-11 items-center gap-2 font-semibold text-accent-soft hover:text-foreground">Let’s talk <ArrowRight className="h-4 w-4" aria-hidden /></Link>
+          </div>
         </Container>
       </section>
     </>

@@ -57,7 +57,7 @@ export function Services() {
                   <Icon className="h-4 w-4" strokeWidth={1.75} />
                 </span>
 
-                <h3 className="mt-5 text-lg font-semibold text-white">
+                <h3 className="mt-5 text-lg font-semibold text-foreground">
                   {service.title}
                 </h3>
                 <p className="mt-2 flex-1 text-base leading-relaxed text-muted">

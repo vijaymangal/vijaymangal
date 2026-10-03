@@ -30,7 +30,7 @@ export function Testimonials() {
               className="grid gap-6 py-10 first:pt-0 last:pb-0 md:grid-cols-12 md:gap-10 md:py-12"
             >
               <blockquote className="md:col-span-8 lg:col-span-9">
-                <p className="text-lg italic leading-[1.75] text-white md:text-xl md:leading-[1.8]">
+                <p className="text-lg italic leading-[1.75] text-foreground md:text-xl md:leading-[1.8]">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
               </blockquote>
@@ -43,7 +43,7 @@ export function Testimonials() {
                   loading="lazy"
                 />
                 <div className="min-w-0">
-                  <cite className="not-italic text-base font-semibold text-white">
+                  <cite className="not-italic text-base font-semibold text-foreground">
                     {testimonial.name}
                   </cite>
                   <p className="mt-1 text-base leading-snug text-muted">

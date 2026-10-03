@@ -1,21 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
-function scrollToHashTarget(hash: string, attempt = 0) {
-  const id = hash.replace('#', '')
-  if (!id) return
-
-  const element = document.getElementById(id)
-  if (element) {
-    element.scrollIntoView({ behavior: 'auto', block: 'start' })
-    return
-  }
-
-  if (attempt < 20) {
-    window.setTimeout(() => scrollToHashTarget(hash, attempt + 1), 50)
-  }
-}
-
 export function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
@@ -27,11 +12,22 @@ export function ScrollToTop() {
 
   useEffect(() => {
     if (hash) {
-      scrollToHashTarget(hash)
-      return
+      let timeoutId: ReturnType<typeof setTimeout>
+      let attempt = 0
+      const scrollToTarget = () => {
+        const element = document.getElementById(hash.slice(1))
+        if (element) {
+          element.scrollIntoView({ behavior: 'instant', block: 'start' })
+        } else if (attempt++ < 100) {
+          // Lazy routes may take a moment to mount on a cold visit.
+          timeoutId = setTimeout(scrollToTarget, 50)
+        }
+      }
+      scrollToTarget()
+      return () => clearTimeout(timeoutId)
     }
 
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [pathname, hash])
 
   return null

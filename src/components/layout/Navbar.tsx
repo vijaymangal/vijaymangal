@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -8,16 +8,47 @@ import { useScrollTo } from '@/hooks/useScrollTo'
 import { sectionIds } from '@/data/navigation'
 import { cn } from '@/utils/cn'
 import { Logo } from '@/components/layout/Logo'
+import { ThemeToggle } from '@/components/layout/ThemeToggle'
 
 const navShell =
-  'rounded-full border border-white/10 bg-[rgba(17,17,17,0.88)] shadow-[0_8px_28px_rgba(0,0,0,0.35)] backdrop-blur-xl backdrop-saturate-150'
+  'nav-shell rounded-full border border-border backdrop-blur-xl backdrop-saturate-150'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const menuButton = useRef<HTMLButtonElement>(null)
+  const mobileHeader = useRef<HTMLElement>(null)
   const location = useLocation()
   const activeSection = useActiveSection(sectionIds)
   const scrollTo = useScrollTo()
   const isHome = location.pathname === '/'
+
+  useEffect(() => {
+    if (!isOpen) return
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false)
+        menuButton.current?.focus()
+      }
+    }
+    const onPointerDown = (event: PointerEvent) => {
+      if (!mobileHeader.current?.contains(event.target as Node)) setIsOpen(false)
+    }
+    const onFocus = (event: FocusEvent) => {
+      if (!mobileHeader.current?.contains(event.target as Node)) setIsOpen(false)
+    }
+    const media = window.matchMedia('(min-width: 768px)')
+    const onResize = () => { if (media.matches) setIsOpen(false) }
+    document.addEventListener('keydown', onKeyDown)
+    document.addEventListener('pointerdown', onPointerDown)
+    document.addEventListener('focusin', onFocus)
+    media.addEventListener('change', onResize)
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+      document.removeEventListener('pointerdown', onPointerDown)
+      document.removeEventListener('focusin', onFocus)
+      media.removeEventListener('change', onResize)
+    }
+  }, [isOpen])
 
   const handleNavClick = (href: string) => {
     scrollTo(href)
@@ -37,6 +68,7 @@ export function Navbar() {
       return (
         <a
           href={item.href}
+          aria-current={isActive ? 'location' : undefined}
           onClick={(e) => {
             e.preventDefault()
             handleNavClick(item.href)
@@ -49,7 +81,7 @@ export function Navbar() {
                 : 'text-muted'
               : isActive
                 ? 'text-white'
-                : 'text-muted hover:text-white'
+                : 'text-muted hover:text-foreground'
           )}
         >
           {!mobile && isActive && (
@@ -71,9 +103,10 @@ export function Navbar() {
 
     return (
       <Link
-        to={item.href === '#hero' ? '/' : `/${item.href}`}
+        to={item.id === 'projects' ? '/projects' : item.href === '#hero' ? '/' : `/${item.href}`}
         onClick={() => mobile && setIsOpen(false)}
-        className={cn(baseClass, 'text-muted hover:text-white')}
+        aria-current={item.id === 'projects' && location.pathname === '/projects' ? 'page' : undefined}
+        className={cn(baseClass, item.id === 'projects' && location.pathname === '/projects' ? 'text-accent-soft' : 'text-muted hover:text-foreground')}
       >
         {item.label}
       </Link>
@@ -87,14 +120,15 @@ export function Navbar() {
         e.preventDefault()
         handleNavClick('#contact')
       }}
-      className="rounded-full bg-accent px-4 py-2 font-mono text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-accent-soft"
+      className="inline-flex min-h-11 items-center rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-accent-hover md:min-h-0 md:py-1.5"
     >
       Let&apos;s talk
     </a>
   ) : (
     <Link
       to="/#contact"
-      className="rounded-full bg-accent px-4 py-2 font-mono text-[10.5px] font-medium uppercase tracking-[0.1em] text-white transition-colors hover:bg-accent-soft"
+      onClick={() => setIsOpen(false)}
+      className="inline-flex min-h-11 items-center rounded-full bg-accent px-4 py-2 text-xs font-semibold text-white transition-colors hover:bg-accent-hover md:min-h-0 md:py-1.5"
     >
       Let&apos;s talk
     </Link>
@@ -113,15 +147,16 @@ export function Navbar() {
           <Link
             to="/"
             onClick={(e) => {
+              setIsOpen(false)
               if (isHome) {
                 e.preventDefault()
                 handleNavClick('#hero')
               }
             }}
             aria-label="Vijay Mangal home"
-            className="shrink-0 border-r border-white/12 pr-3.5 hover:opacity-90"
+            className="shrink-0 border-r border-border pr-3.5 hover:opacity-90"
           >
-            <Logo size="sm" className="text-white" />
+            <Logo size="sm" className="text-foreground" />
           </Link>
 
           <ul className="relative flex min-w-0 items-center gap-1 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
@@ -132,15 +167,17 @@ export function Navbar() {
             ))}
           </ul>
 
+          <ThemeToggle />
           <div className="shrink-0">{contactCta}</div>
         </nav>
       </header>
 
-      <header className="fixed inset-x-0 top-0 z-50 md:hidden">
+      <header ref={mobileHeader} className="fixed inset-x-0 top-0 z-50 md:hidden">
         <div className="flex items-center justify-between px-4 py-3">
           <Link
             to="/"
             onClick={(e) => {
+              setIsOpen(false)
               if (isHome) {
                 e.preventDefault()
                 handleNavClick('#hero')
@@ -149,27 +186,34 @@ export function Navbar() {
             aria-label="Vijay Mangal home"
             className={cn('px-3.5 py-2 hover:opacity-90', navShell)}
           >
-            <Logo size="sm" className="text-white" />
+            <Logo size="sm" className="text-foreground" />
           </Link>
 
-          <button
-            type="button"
-            className={cn('p-2.5 text-white/80', navShell)}
-            onClick={() => setIsOpen(!isOpen)}
-            aria-expanded={isOpen}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle className={navShell} />
+            <button
+              ref={menuButton}
+              type="button"
+              className={cn('flex h-11 w-11 items-center justify-center text-foreground/80', navShell)}
+              onClick={() => setIsOpen(!isOpen)}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         <AnimatePresence>
           {isOpen && (
-            <motion.div
+            <motion.nav
+              id="mobile-navigation"
+              aria-label="Mobile navigation"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden border-t border-white/10 bg-[rgba(17,17,17,0.95)] backdrop-blur-xl"
+              className="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-border bg-bg/95 backdrop-blur-xl"
             >
               <ul className="flex flex-col gap-1 px-4 py-4">
                 {navigation.map((item) => (
@@ -177,7 +221,7 @@ export function Navbar() {
                 ))}
                 <li className="pt-2">{contactCta}</li>
               </ul>
-            </motion.div>
+            </motion.nav>
           )}
         </AnimatePresence>
       </header>

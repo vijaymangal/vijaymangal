@@ -12,7 +12,7 @@ import { SectionHeading } from '@/components/ui/SectionHeading'
 import { Container } from '@/components/layout/Container'
 import { Button } from '@/components/ui/Button'
 import { Magnetic } from '@/components/effects/Magnetic'
-import { contactChannels, resumeUrl } from '@/data/social'
+import { contactChannels, contactInfo, resumeUrl } from '@/data/social'
 import type { ContactChannel } from '@/types'
 import { fadeUp, staggerContainer } from '@/utils/motion'
 
@@ -56,6 +56,14 @@ export function Contact() {
                 <span className="text-xs font-medium text-accent-soft">Open to new roles</span>
               </div>
 
+              <div className="mt-6">
+                <h3 className="text-display text-2xl md:text-3xl">Let’s build something useful.</h3>
+                <p className="mt-3 max-w-xl text-muted">Share a little about your team, project, or role and what you have in mind.</p>
+                <Button href={`mailto:${contactInfo.email}`} className="mt-5 gap-2">
+                  <Mail className="h-4 w-4" /> Start a conversation
+                </Button>
+              </div>
+
               <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {contactChannels.map((channel) => {
                   const Icon = channelIcons[channel.icon]
@@ -75,7 +83,7 @@ export function Contact() {
                         <span className="block text-xs font-medium uppercase tracking-wider text-muted">
                           {channel.label}
                         </span>
-                        <span className="mt-0.5 block truncate text-base font-medium text-white">
+                        <span className="mt-0.5 block break-words text-sm font-medium text-foreground [overflow-wrap:anywhere] md:text-base">
                           {channel.display}
                         </span>
                       </span>
@@ -89,7 +97,7 @@ export function Contact() {
                 <Magnetic strength={0.15}>
                   <Button href={resumeUrl} download variant="outline" className="gap-2">
                     <Download className="h-4 w-4" />
-                    Resume
+                    Download résumé
                   </Button>
                 </Magnetic>
               </div>

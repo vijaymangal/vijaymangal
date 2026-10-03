@@ -6,19 +6,21 @@
   src: url('../assets/Authentic%20Photograph.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 @theme {
   --color-bg: #111111;
+  --color-foreground: #fafafa;
   --color-surface: #161616;
   --color-elevated: #1a1a1a;
   --color-card: #1f1f1f;
   --color-cream: #f0efeb;
   --color-accent: #c2410c;
-  --color-accent-soft: #ea580c;
+  --color-accent-soft: #fb923c;
+  --color-accent-hover: #9a3412;
   --color-cyan: #ffedd5;
-  --color-muted: #888888;
+  --color-muted: #a1a1aa;
   --color-border: rgba(255, 255, 255, 0.1);
   --color-ink: #111111;
   --font-sans: 'Ysabeau', system-ui, sans-serif;
@@ -36,6 +38,61 @@ html {
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--color-accent) 42%, var(--color-elevated)) var(--color-bg);
+}
+
+:root {
+  color-scheme: dark;
+  --section-hero: #171412;
+  --section-about: #141414;
+  --section-skills: #121318;
+  --section-projects: #151310;
+  --section-services: #131211;
+  --section-contact: #101010;
+  --section-footer: #0b0b0b;
+  --section-projects-page: #141311;
+  --section-divider: color-mix(in srgb, var(--color-accent) 12%, var(--color-border));
+  --nav-background: rgba(17, 17, 17, 0.88);
+  --nav-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --color-bg: #f5f3ef;
+  --color-foreground: #1c1917;
+  --color-surface: #f7f5f1;
+  --color-elevated: #ffffff;
+  --color-card: #ffffff;
+  --color-muted: #57534e;
+  --color-border: rgba(28, 25, 23, 0.14);
+  --color-accent-soft: #b45309;
+  --section-hero: #f5f3ef;
+  --section-about: #faf9f6;
+  --section-skills: #f2f3f5;
+  --section-projects: #f4f1eb;
+  --section-services: #faf8f5;
+  --section-contact: #f5f3ef;
+  --section-footer: #ebe7e0;
+  --section-projects-page: #f4f1eb;
+  --nav-background: rgba(250, 249, 246, 0.9);
+  --nav-shadow: 0 8px 28px rgba(28, 25, 23, 0.1);
+}
+
+.nav-shell {
+  background-color: var(--nav-background);
+  box-shadow: var(--nav-shadow);
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 5px;
+}
+
+:where(section[id], article[id], main[id]) {
+  scroll-margin-top: 6rem;
+}
+
+img {
+  max-width: 100%;
 }
 
 * {
@@ -71,7 +128,7 @@ html {
 body {
   margin: 0;
   background-color: var(--color-bg);
-  color: #fafafa;
+  color: var(--color-foreground);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.7;
@@ -98,12 +155,7 @@ body {
 }
 
 .section-tone {
-  color: #fafafa;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-muted: #888888;
-  --color-elevated: #1a1a1a;
-  --color-card: #1f1f1f;
-  --section-divider: color-mix(in srgb, var(--color-accent) 12%, rgba(255, 255, 255, 0.06));
+  color: var(--color-foreground);
 }
 
 .section-tone:not(.section-bg-footer) {
@@ -111,42 +163,42 @@ body {
 }
 
 .section-bg-hero {
-  background-color: #171412;
+  background-color: var(--section-hero);
 }
 
 .section-bg-about {
-  background-color: #141414;
+  background-color: var(--section-about);
 }
 
 .section-bg-skills {
-  background-color: #121318;
+  background-color: var(--section-skills);
 }
 
 .section-bg-projects {
-  background-color: #151310;
+  background-color: var(--section-projects);
 }
 
 .section-bg-services {
-  background-color: #131211;
+  background-color: var(--section-services);
 }
 
 .section-bg-contact {
-  background-color: #101010;
+  background-color: var(--section-contact);
 }
 
 .section-bg-footer {
-  background-color: #0b0b0b;
+  background-color: var(--section-footer);
 }
 
 .section-bg-projects-page {
-  background-color: #141311;
+  background-color: var(--section-projects-page);
 }
 
 .section-dark {
   background-color: #111111;
   color: #fafafa;
   --color-border: rgba(255, 255, 255, 0.1);
-  --color-muted: #888888;
+  --color-muted: #a1a1aa;
   --color-elevated: #1a1a1a;
   --color-card: #1f1f1f;
 }
@@ -213,7 +265,7 @@ body {
 
 .section-tone .icon-chip,
 .section-dark .icon-chip {
-  background-color: rgba(255, 255, 255, 0.06);
+  background-color: color-mix(in srgb, var(--color-foreground) 6%, transparent);
 }
 
 .section-light ::selection {
@@ -266,7 +318,7 @@ h6 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #fff 0%, #ea580c 50%, #ffedd5 100%);
+  background: linear-gradient(135deg, var(--color-foreground) 0%, var(--color-accent-soft) 50%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

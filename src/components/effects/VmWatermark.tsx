@@ -9,7 +9,7 @@ export function VmWatermark({ className }: VmWatermarkProps) {
     <p
       aria-hidden
       className={cn(
-        'font-name pointer-events-none select-none text-[clamp(7rem,26vw,16rem)] leading-none tracking-[0.08em] text-white/[0.04]',
+        'font-name pointer-events-none select-none text-[clamp(7rem,26vw,16rem)] leading-none tracking-[0.08em] text-foreground/[0.04]',
         className
       )}
     >
